@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net"
 
 	"github.com/google/gopacket"
+	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 )
 
@@ -48,6 +50,7 @@ func getIPs(packet gopacket.PacketSource) {
 	var pastIPs [2]gopacket.Endpoint
 	var src gopacket.Endpoint
 	var dest gopacket.Endpoint
+	//var malformedPackets
 	for {
 		p, err := packet.NextPacket()
 		if err == io.EOF {
@@ -56,6 +59,20 @@ func getIPs(packet gopacket.PacketSource) {
 			log.Println("Error:", err)
 			continue
 		}
+
+		netLayer := p.NetworkLayer()
+		if netLayer == nil {
+			for _, layer := range p.Layers() {
+				if layer.LayerType() == layers.LayerTypeARP {
+					arpLayer := layer.(*layers.ARP)
+					senderMac := net.HardwareAddr(arpLayer.SourceHwAddress).String()
+					recieverMac := net.HardwareAddr(arpLayer.DstProtAddress).String()
+					fmt.Print("arp packet sent by ", senderMac, "looking for", recieverMac, "\n")
+				}
+			}
+			continue
+		}
+
 		src, dest = p.NetworkLayer().NetworkFlow().Endpoints()
 		if !((src == pastIPs[0]) && (dest == pastIPs[1])) && !((src == pastIPs[1]) && (dest == pastIPs[0])) {
 			//means that this is a new flow
@@ -65,3 +82,10 @@ func getIPs(packet gopacket.PacketSource) {
 		}
 	}
 }
+
+/*
+func getIPsv3(packet gopacket.PacketSource) {
+	var eth layers.Ethernet
+
+}
+*/
