@@ -20,8 +20,7 @@ const (
 	SSDP packetProtocol = "SSDP"
 	DNS  packetProtocol = "DNS"
 	TLS  packetProtocol = "TLS"
-
-	TCP packetProtocol = "TCP"
+	TCP  packetProtocol = "TCP"
 )
 
 type PacketInfo struct {
@@ -31,6 +30,7 @@ type PacketInfo struct {
 	sourcePort     string
 	destPort       string
 	eof            bool
+	appData        []byte
 }
 
 func givePackets() PacketInfo {
@@ -77,6 +77,10 @@ func getIPs(packet gopacket.PacketSource) PacketInfo {
 	} else if err != nil {
 		log.Println("Error:", err)
 		return packetInfo
+	}
+
+	if p.ApplicationLayer() != nil {
+		packetInfo.appData = p.ApplicationLayer().Payload()
 	}
 
 	netLayer := p.NetworkLayer()

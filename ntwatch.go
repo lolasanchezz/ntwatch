@@ -18,9 +18,13 @@ func main() {
 	packetSource := gopacket.NewPacketSource(handle, handle.LinkType())
 
 	for {
-		packet := getIPs(*packetSource).packetProtocol
-		if packet != layers.LayerTypeTCP {
-			fmt.Print(packet, "\n")
+
+		packet := getIPs(*packetSource)
+		if packet.packetProtocol != layers.LayerTypeTCP {
+			//fmt.Print(packet.packetProtocol, "\n")
+		}
+		if packet.appData != nil {
+			fmt.Print(lookThroughBody(packet.appData))
 		}
 	}
 

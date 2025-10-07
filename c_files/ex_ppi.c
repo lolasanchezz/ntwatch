@@ -4,6 +4,9 @@
 #include <libproc.h>
 #include <sys/proc_info.h>
 
+
+
+
 struct proc_fdinfo* getFDs(pid_t pid) {
     
     //get buffer size for file descriptors
@@ -37,8 +40,13 @@ struct proc_fdinfo* getFDs(pid_t pid) {
         }
     }
     //use proc_pidfdinfo once file descriptors are obtained
-    return NULL; 
+    return fdInfo; 
 }
+
+
+
+
+
 
 
 pid_t* getPids() {
@@ -50,12 +58,23 @@ pid_t* getPids() {
     int bytesUsed = proc_listpids(PROC_ALL_PIDS, 0, pids, (int)pidsBufSize);
     int numPids = bytesUsed / sizeof(pid_t);
 
+    int newArrSize = 0;
+
     for (int i = 0; i < numPids; i++) {
         if (pids[i] != 0) {  // filter out "empty" slots, why does proc_listpids do this?
-            printf("PID: %d\n", pids[i]);
+            newArrSize++;
         }
     }
 
+    pid_t *nonEmptyPids = (pid_t *)malloc(newArrSize*sizeof(pid_t));
+    int arrTracker = 0;
+    for (int i = 0; i < numPids; i++) {
+        if (pids[i] != 0) {
+            nonEmptyPids[arrTracker] = pids[i];
+            arrTracker++;
+        }
+       
+    }
     return pids;
 }
 
@@ -66,8 +85,7 @@ pid_t* getPids() {
 int main(int argc, char *argv[]) { 
     pid_t myPid;
     myPid = 94098;
-  
-
-    getPids();
+    pid_t* allPidsArr = getPids();
+    printf("First PID: %d\n", allPidsArr[4]);
 
 }
