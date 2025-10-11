@@ -75,13 +75,18 @@ func (m *payloadViewer) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	default:
 		m.currentData = "no packets yet"
 	}
+
+	//m.currentData = "e"
 	return m, nil
 }
 
 func (m *payloadViewer) Init() tea.Cmd {
+	m.currentData = ""
+	m.packets = make(chan gopacket.Packet)
 	return nil
 }
 
 func (m *payloadViewer) View() string {
+
 	return m.currentData
 }
