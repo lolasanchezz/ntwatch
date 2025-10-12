@@ -1,10 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"log"
-	"os"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/pcap"
@@ -13,11 +11,12 @@ import (
 )
 
 type model struct {
-	payloadViewer payloadViewer
-	packetChannel chan<- gopacket.Packet
+	payloadViewer *payloadViewer
+	packetChannel chan gopacket.Packet
 }
 
 func initialModel() model {
+
 	return model{}
 }
 
@@ -29,19 +28,20 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-
-	//goal -
+	// Delegate to payloadViewer's Update method
+	var cmd tea.Cmd
+	updatedViewer, viewerCmd := m.payloadViewer.Update(msg)
+	m.payloadViewer = updatedViewer.(*payloadViewer)
+	cmd = viewerCmd
 
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.Type {
 		case tea.KeyCtrlC:
 			return m, tea.Quit
-
 		}
-
 	}
-	return m, nil
+	return m, cmd
 }
 
 func (m model) View() string {
@@ -49,13 +49,15 @@ func (m model) View() string {
 }
 
 func main() {
+	/*
+		p := tea.NewProgram(initialModel())
+		if _, err := p.Run(); err != nil {
+			fmt.Printf("error error error : %v", err)
+			os.Exit(1)
 
-	p := tea.NewProgram(initialModel())
-	if _, err := p.Run(); err != nil {
-		fmt.Printf("error error error : %v", err)
-		os.Exit(1)
-
-	}
+		}
+	*/
+	test()
 
 }
 

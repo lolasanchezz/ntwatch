@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"unsafe"
 
@@ -36,19 +37,40 @@ func ProcPidInfo(pid lc.Pid) []proc_fdinfo {
 	return arr[:int(actualBytes)/int(unsafe.Sizeof(proc_fdinfo{}))]
 }
 
+//socket types
+// TODO move to a different file
+
 func test() {
 	allPids, err := lc.ListAllPids(0)
 	if err != nil {
 		log.Fatal(err)
 	}
-	allFdInfo := make([][]proc_fdinfo, len(allPids))
-	for i, pid := range allPids {
+	allFdInfo := make(map[lc.Pid][]proc_fdinfo, len(allPids))
+	for _, pid := range allPids {
 
 		pids := ProcPidInfo(pid)
 		if pids != nil {
-			allFdInfo[i] = pids
+			allFdInfo[pid] = pids
 		}
 	}
 	//fmt.Print(allFdInfo[rand.Int31n(int32(len(allFdInfo)))])
+	sockets := make(map[lc.Pid][]SocketInfo, len(allPids))
+
+	//populate sockets arr with pids
+	for _, pid := range allPids {
+		sockets[pid] = make([]SocketInfo, 5)
+	}
+
+	for pid, fdArr := range allFdInfo {
+		for i, fd := range fdArr {
+			if fd.proc_fdtype == PROX_FDTYPE_SOCKET {
+				bytesWritten, err := lc.RawProcPidFDInfo(pid, int(fd.proc_fd), lc.ProcPidfdsocketinfo, unsafe.Pointer(&(sockets[pid][i])), int(unsafe.Sizeof(SocketInfo{})))
+				if bytesWritten == 0 || err != nil {
+					fmt.Printf("bytes written was 0, %n", err)
+				}
+			}
+
+		}
+	}
 
 }
