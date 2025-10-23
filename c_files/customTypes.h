@@ -1,4 +1,3 @@
-#include <mach/arm/boolean.h>
 #include <stdlib.h>
 
 #define MAXCOMLEN 16
@@ -24,7 +23,9 @@ const char LOCAL_IPS[][16] = {
     "172.30.",
     "172.31.",
     "192.168.",   // 192.168.0.0 – 192.168.255.255
-    "127."        // localhost
+    "127.",       // localhost
+        "fe80:"
+
 };
 #define LOCAL_IPS_LEN (sizeof(LOCAL_IPS)/sizeof(LOCAL_IPS[0]))
 

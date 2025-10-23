@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/_types/_pid_t.h>
 #include <sys/proc_info.h>
 #include <unistd.h>
 
@@ -107,31 +108,136 @@ struct socketinfo_andpid {
   struct socket_fdinfo socketinfo;
 };
 
-int main(int argc, char *argv[]) {
+void pidsSocketsCountInternal(int *numSockets, int *pidAmt,
+                              pid_t *allPidsArrPtr) {
 
-  int amtPids = 0;
+  int socketNum = 0;
+  for (int i = 0; i < *pidAmt; i++) {
+    int amtFds = 0;
+    struct proc_fdinfo *fdinfo = getFDs(allPidsArrPtr[i], &amtFds);
+    // checking for sockets!
+    for (int j = 0; j < amtFds; j++) {
+      if (fdinfo[j].proc_fdtype == PROX_FDTYPE_SOCKET) {
+        socketNum++;
+      }
+    }
+  }
+  *numSockets = socketNum;
+}
 
+void socketCount(int *numSocketsPtr) {
+  int amtPids;
   pid_t *allPidsArr = getPids(&amtPids);
-
-  // printf("Total PIDs: %d\n", amtPids);
 
   int socketNum = 0;
   for (int i = 0; i < amtPids; i++) {
     int amtFds = 0;
     struct proc_fdinfo *fdinfo = getFDs(allPidsArr[i], &amtFds);
-    // just a quick check for sockets
+    // checking for sockets!
     for (int j = 0; j < amtFds; j++) {
       if (fdinfo[j].proc_fdtype == PROX_FDTYPE_SOCKET) {
-        //  printf("PID %d: socket detected\n", allPidsArr[i]);
         socketNum++;
-        /*
-        struct socket_fdinfo socketInfo;
-        int bytesRead = getSocketData(allPidsArr[i], fdinfo[j].proc_fd,
-        &socketInfo); printf("bytes read: %d \n", bytesRead);
-        */
       }
     }
   }
+  *numSocketsPtr = socketNum;
+}
+
+void descSocket(struct socketInfo *info,
+                struct socketinfo_andpid *socket_info) {
+
+  info->pid = socket_info->pid;
+  proc_name(socket_info->pid, info->processName, sizeof(processName_t));
+
+  if (socket_info->socketinfo.psi.soi_kind == SOCKINFO_IN) {
+
+    info->socket_type = UDP;
+    info->sourcePort =
+        ntohs(socket_info->socketinfo.psi.soi_proto.pri_in.insi_lport);
+    info->destPort =
+        ntohs(socket_info->socketinfo.psi.soi_proto.pri_in.insi_fport);
+
+    if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag == INI_IPV4) {
+
+      char ipStr[INET_ADDRSTRLEN];
+      convAddrIpv4(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr
+                       .ina_46.i46a_addr4.s_addr,
+                   ipStr);
+      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+    } else if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag ==
+               INI_IPV6) {
+      char ipStr[INET6_ADDRSTRLEN];
+      convAddrIpv6(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_6
+                       .__u6_addr.__u6_addr8,
+                   ipStr);
+      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+    }
+  } else if (socket_info->socketinfo.psi.soi_kind == SOCKINFO_TCP) {
+    info->socket_type = TCP;
+    info->sourcePort = ntohs(
+        socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_lport);
+    info->destPort = ntohs(
+        socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_fport);
+
+    if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
+        INI_IPV4) {
+      info->connection_type = IPV4;
+      char ipStr[INET_ADDRSTRLEN];
+      convAddrIpv4(socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini
+                       .insi_faddr.ina_46.i46a_addr4.s_addr,
+                   ipStr);
+      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+    } else if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini
+                   .insi_vflag == INI_IPV6) {
+      info->connection_type = IPV6;
+      char ipStr[INET6_ADDRSTRLEN];
+      convAddrIpv6((const uint8_t *)&socket_info->socketinfo.psi.soi_proto
+                       .pri_tcp.tcpsi_ini.insi_faddr.ina_6,
+                   ipStr);
+      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+    }
+  }
+
+  info->local = 0;
+  info->listening = 0;
+
+  // Check first three characters against LOCAL_IPS
+  for (int i = 0; i < LOCAL_IPS_LEN; i++) {
+    if (strncmp(info->destIPAddr, LOCAL_IPS[i], strlen(LOCAL_IPS[i])) == 0) {
+      info->local = 1;
+      break; // found a match, no need to check further
+    }
+  }
+
+  // Check first character against listening prefixes
+  if (info->destIPAddr[0] == LISTENING_IP_PREFIX[0] ||
+      info->destIPAddr[0] == LISTENING_IP_PREFIX2[0]) {
+    info->listening = 1;
+  }
+}
+
+void printSockets(struct socketInfo *socketData, int socketNum) {
+
+  for (int i = 0; i < socketNum; i++) {
+
+    if ((socketData[i].socket_type == TCP) && (socketData[i].local != 1)) { //&&
+      //   (goSocketData[i].listening != 1)) {
+      printf("process name: %s \n   - pid: %d \n   - connection type %d"
+             "\n   - ip %s \n   - local port %d\n   - foreign port %d \n\n",
+             socketData[i].processName, socketData[i].pid,
+             socketData[i].socket_type, socketData[i].destIPAddr,
+             socketData[i].sourcePort, socketData[i].destPort);
+    }
+  }
+}
+
+void goSocketStructs(struct socketInfo *goSocketData, int socketNum) {
+  int amtPids;
+
+  pid_t *allPidsArr = getPids(&amtPids);
+
+  pidsSocketsCountInternal(&socketNum, &amtPids, allPidsArr);
+
   struct socketinfo_andpid *socketDataArr = (struct socketinfo_andpid *)malloc(
       socketNum * sizeof(struct socketinfo_andpid));
   int arrCounter = 0;
@@ -147,151 +253,33 @@ int main(int argc, char *argv[]) {
         int bytesRead = getSocketData(allPidsArr[i], fdinfo[j].proc_fd,
                                       &socketDataArr[arrCounter].socketinfo);
         arrCounter++;
-        //  printf("bytes read: %d \n", bytesRead);
       }
     }
   }
+  // previous declaration of go socket data for reference
+  /*
+  struct socketInfo *goSocketData =
+      (struct socketInfo *)malloc(socketNum * sizeof(struct socketInfo));
+*/
+  for (int i = 0; i < socketNum; i++) {
+    descSocket(&goSocketData[i], &socketDataArr[i]);
+  }
+}
+
+int main(int argc, char *argv[]) {
+  int amtPids;
+  int socketNum;
+
+  pid_t *allPidsArr = getPids(&amtPids);
+
+  pidsSocketsCountInternal(&socketNum, &amtPids, allPidsArr);
   struct socketInfo *goSocketData =
       (struct socketInfo *)malloc(socketNum * sizeof(struct socketInfo));
 
-  for (int i = 0; i < socketNum; i++) {
-    struct socketInfo info;
-    info.pid = socketDataArr[i].pid;
-    proc_name(socketDataArr[i].pid, info.processName, sizeof(processName_t));
-    /*
-    if (socketDataArr[i].socketinfo.psi.soi_kind == SOCKINFO_IN) {
-         uint16_t lport =
-    ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_lport); uint16_t
-    fport = ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_fport);
-        printf("UDP local port %d to foreign port %d on pid %d\n",
-            ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_lport),
-            ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_fport),
-            socketDataArr[i].pid);
+  goSocketStructs(goSocketData, socketNum);
 
-      if (socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_vflag ==
-    INI_IPV4) { char ipStr[INET_ADDRSTRLEN];
-            convAddrIpv4(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_46.i46a_addr4.s_addr,
-    ipStr); printf("    Remote IPv4: %s:%u\n", ipStr, fport); } else if
-    (socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_vflag == INI_IPV6) {
-            char ipStr[INET6_ADDRSTRLEN];
-            convAddrIpv6(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_6.__u6_addr.__u6_addr8,
-    ipStr); printf("    Remote IPv6: [%s]:%u\n", ipStr, fport);
-        }
-    } else if (socketDataArr[i].socketinfo.psi.soi_kind == SOCKINFO_TCP) {
-        uint16_t lport =
-    ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_lport);
-        uint16_t fport =
-    ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_fport);
-
-        printf("TCP local port %d to foreign port %d on pid %d\n", lport, fport,
-    socketDataArr[i].pid);
-
-
-        if
-    (socketDataArr[i].socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
-    INI_IPV4) { char ipStr[INET_ADDRSTRLEN];
-            convAddrIpv4(socketDataArr[i].socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_faddr.ina_46.i46a_addr4.s_addr,
-    ipStr); printf("Remote IPv4: %s:%u\n", ipStr, fport);
-        }
-        else if
-    (socketDataArr[i].socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
-    INI_IPV6) { struct in6_addr faddr6 =
-    socketDataArr[i].socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_faddr.ina_6;
-            char ipStr[INET6_ADDRSTRLEN];
-            inet_ntop(AF_INET6, &faddr6, ipStr, sizeof(ipStr));
-
-            printf("Remote IPv6: [%s]:%u\n", ipStr, fport);
-        }
-    }
-        */
-    if (socketDataArr[i].socketinfo.psi.soi_kind == SOCKINFO_IN) {
-
-      info.socket_type = UDP;
-      info.sourcePort =
-          ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_lport);
-      info.destPort =
-          ntohs(socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_fport);
-
-      if (socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_vflag ==
-          INI_IPV4) {
-
-        char ipStr[INET_ADDRSTRLEN];
-        convAddrIpv4(socketDataArr[i]
-                         .socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_46
-                         .i46a_addr4.s_addr,
-                     ipStr);
-        strncpy(info.destIPAddr, ipStr, sizeof(ipAddr));
-      } else if (socketDataArr[i].socketinfo.psi.soi_proto.pri_in.insi_vflag ==
-                 INI_IPV6) {
-        char ipStr[INET6_ADDRSTRLEN];
-        convAddrIpv6(socketDataArr[i]
-                         .socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_6
-                         .__u6_addr.__u6_addr8,
-                     ipStr);
-        strncpy(info.destIPAddr, ipStr, sizeof(ipAddr));
-      }
-    } else if (socketDataArr[i].socketinfo.psi.soi_kind == SOCKINFO_TCP) {
-      info.socket_type = TCP;
-      info.sourcePort =
-          ntohs(socketDataArr[i]
-                    .socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_lport);
-      info.destPort =
-          ntohs(socketDataArr[i]
-                    .socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_fport);
-
-      if (socketDataArr[i]
-              .socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
-          INI_IPV4) {
-        info.connection_type = IPV4;
-        char ipStr[INET_ADDRSTRLEN];
-        convAddrIpv4(socketDataArr[i]
-                         .socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_faddr
-                         .ina_46.i46a_addr4.s_addr,
-                     ipStr);
-        strncpy(info.destIPAddr, ipStr, sizeof(ipAddr));
-      } else if (socketDataArr[i]
-                     .socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
-                 INI_IPV6) {
-        info.connection_type = IPV6;
-        char ipStr[INET6_ADDRSTRLEN];
-       convAddrIpv6((const uint8_t *)&socketDataArr[i]
-                 .socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_faddr.ina_6,
-             ipStr);
-        strncpy(info.destIPAddr, ipStr, sizeof(ipAddr));
-      }
-    }
-
-
-info.local = 0;
-info.listening = 0;
-
-// Check first three characters against LOCAL_IPS
-for (int i = 0; i < LOCAL_IPS_LEN; i++) {
-    if (strncmp(info.destIPAddr, LOCAL_IPS[i], strlen(LOCAL_IPS[i])) == 0) {
-        info.local = 1;
-        break;  // found a match, no need to check further
-    }
-}
-
-// Check first character against listening prefixes
-if (info.destIPAddr[0] == LISTENING_IP_PREFIX[0] ||
-    info.destIPAddr[0] == LISTENING_IP_PREFIX2[0]) {
-    info.listening = 1;
-}
-
-
-    goSocketData[i] = info;
-   
-  }
-
-  for (int i = 0; i < socketNum; i++) {
-    if ((goSocketData[i].socket_type == TCP) && (goSocketData[i].local != 1) && (goSocketData[i].listening != 1)) {
-  printf("process name: %s \n   - pid: %d \n   - connection type %d\n  - ip %s \n", goSocketData[i].processName, goSocketData[i].pid, goSocketData[i].socket_type, goSocketData[i].destIPAddr);
-    }
-  }
+  // for testing purposes only
+  printSockets(goSocketData, socketNum);
 
   return 0;
-
-
-
 }
