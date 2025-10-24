@@ -1,33 +1,11 @@
 #include <stdlib.h>
-
 #define MAXCOMLEN 16
 #define LISTENING_IP_PREFIX "0"
 #define LISTENING_IP_PREFIX2 ":"
+#pragma once
+extern const char LOCAL_IPS[][16];
+extern const int LOCAL_IPS_LEN;
 
-const char LOCAL_IPS[][16] = {
-    "10.",        // 10.0.0.0 – 10.255.255.255
-    "172.16.",    // 172.16.0.0 – 172.31.255.255
-    "172.17.",
-    "172.18.",
-    "172.19.",
-    "172.20.",
-    "172.21.",
-    "172.22.",
-    "172.23.",
-    "172.24.",
-    "172.25.",
-    "172.26.",
-    "172.27.",
-    "172.28.",
-    "172.29.",
-    "172.30.",
-    "172.31.",
-    "192.168.",   // 192.168.0.0 – 192.168.255.255
-    "127.",       // localhost
-        "fe80:"
-
-};
-#define LOCAL_IPS_LEN (sizeof(LOCAL_IPS)/sizeof(LOCAL_IPS[0]))
 
 typedef char ipAddr[16];
 typedef uint16_t port;
@@ -50,6 +28,6 @@ struct socketInfo {
   int listening;
 };
 
-typedef ipAddr minSocketInfoArr[];
-
-struct tcpInfo {};
+//two primary functions which should be called from go
+void goSocketStructs(struct socketInfo *goSocketData, int socketNum);
+void socketCount(int *numSocketsPtr);

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"unsafe"
 
 	lc "github.com/tejasmanohar/go-libproc"
@@ -37,40 +38,153 @@ func ProcPidInfo(pid lc.Pid) []proc_fdinfo {
 	return arr[:int(actualBytes)/int(unsafe.Sizeof(proc_fdinfo{}))]
 }
 
+func randomIndArr[T any](arr []T) int {
+	return int(rand.Int31n(int32(len(arr))))
+}
+func randomIndMap[M ~map[K]V, K comparable, V any](Map M) any {
+	ind := int(rand.Int31n(int32(len(Map))))
+	i := 0
+	for key, _ := range Map {
+		if i == ind {
+			fmt.Print(key)
+			return key
+
+		}
+		i++
+	}
+	return nil
+}
+
 //socket types
 // TODO move to a different file
+/*
+func test() {
+
+	allPids, err := lc.ListAllPids(0)
+	if err != nil {
+		log.Fatal(err)
+	}
+	socketFds := make(map[lc.Pid][]proc_fdinfo, len(allPids))
+	/*
+		for _, pid := range allPids {
+			socketFds[pid] = make([]proc_fdinfo, 5)
+		}
+
+	allFdInfo := make(map[lc.Pid][]proc_fdinfo, len(allPids))
+	for _, pid := range allPids {
+
+		fds := ProcPidInfo(pid)
+		if fds != nil {
+			allFdInfo[pid] = fds
+			for _, fd := range fds {
+				if fd.proc_fdtype == PROX_FDTYPE_SOCKET {
+					if socketFds[pid] == nil {
+						socketFds[pid] = []proc_fdinfo{fd}
+					} else {
+						socketFds[pid] = append(socketFds[pid], fd)
+					}
+					//	fmt.Print(fd)
+				}
+			}
+		}
+	}
+	//randomPid := randomIndMap(socketFds).(lc.Pid)
+	//fmt.Print(socketFds[randomPid])
+	//fmt.Print(allFdInfo[rand.Int31n(int32(len(allFdInfo)))])
+
+	//populate sockets arr with pids
+	socketFdInfo := make(map[lc.Pid][]SocketFDInfo)
+
+	for key, val := range socketFds {
+		socketFdInfo[key] = make([]SocketFDInfo, len(val))
+	}
+	/*
+		for pid, sockArr := range socketFds {
+			for i, fd := range sockArr {
+
+				bytesWritten, err := lc.RawProcPidFDInfo(pid, int(fd.proc_fd), lc.ProcPidfdsocketinfo, unsafe.Pointer(&(socketFdInfo[pid][i])), int(unsafe.Sizeof(SocketInfo{})))
+				if bytesWritten == 0 || err != nil {
+					log.Fatal("bytes written was 0, %n", err)
+				}
+
+			}
+		}
+
+	self := lc.Pid(648)
+	fds := ProcPidInfo(self)
+	for _, fd := range fds {
+		if fd.proc_fdtype == PROX_FDTYPE_SOCKET {
+			var info SocketFDInfo
+			n, err := lc.RawProcPidFDInfo(self, int(fd.proc_fd), lc.ProcPidfdsocketinfo,
+				unsafe.Pointer(&info), int(unsafe.Sizeof(info)))
+			fmt.Printf("fd=%d size=%d err=%v\n", fd.proc_fd, n, err)
+		}
+	}
+}
+*/
 
 func test() {
 	allPids, err := lc.ListAllPids(0)
 	if err != nil {
 		log.Fatal(err)
 	}
-	allFdInfo := make(map[lc.Pid][]proc_fdinfo, len(allPids))
-	for _, pid := range allPids {
 
-		pids := ProcPidInfo(pid)
-		if pids != nil {
-			allFdInfo[pid] = pids
+	socketFds := make(map[lc.Pid][]proc_fdinfo, len(allPids))
+	allFdInfo := make(map[lc.Pid][]proc_fdinfo, len(allPids))
+
+	for _, pid := range allPids {
+		fds := ProcPidInfo(pid)
+		if fds == nil {
+			continue
+		}
+		allFdInfo[pid] = fds
+		for _, fd := range fds {
+			if fd.proc_fdtype == PROX_FDTYPE_SOCKET {
+				socketFds[pid] = append(socketFds[pid], fd)
+			}
 		}
 	}
-	//fmt.Print(allFdInfo[rand.Int31n(int32(len(allFdInfo)))])
-	sockets := make(map[lc.Pid][]SocketInfo, len(allPids))
 
-	//populate sockets arr with pids
-	for _, pid := range allPids {
-		sockets[pid] = make([]SocketInfo, 5)
+	socketFdInfo := make(map[lc.Pid][]SocketFDInfo, len(socketFds))
+	for pid, sockArr := range socketFds {
+		socketFdInfo[pid] = make([]SocketFDInfo, len(sockArr))
 	}
 
-	for pid, fdArr := range allFdInfo {
-		for i, fd := range fdArr {
-			if fd.proc_fdtype == PROX_FDTYPE_SOCKET {
-				bytesWritten, err := lc.RawProcPidFDInfo(pid, int(fd.proc_fd), lc.ProcPidfdsocketinfo, unsafe.Pointer(&(sockets[pid][i])), int(unsafe.Sizeof(SocketInfo{})))
-				if bytesWritten == 0 || err != nil {
-					fmt.Printf("bytes written was 0, %n", err)
+	for pid, sockArr := range socketFds {
+		for i, fd := range sockArr {
+			var info SocketFDInfo
+			_ = int(unsafe.Sizeof(info))
+			//first get the size of the buffer
+
+			size, err := lc.RawProcPidFDInfo(pid, int(fd.proc_fd), lc.ProcPidfdsocketinfo,
+				unsafe.Pointer(nil), 0)
+			fmt.Printf(" \n err: %v", err)
+			if err != nil {
+
+				if err.Error() == "cannot allocate memory" {
+					continue // this happens all the time - enomem - happens sporadically
 				}
+				log.Printf("pid %d fd %d: %v", pid, fd.proc_fd, err)
+				continue
 			}
 
+			bytesRead, err := lc.RawProcPidFDInfo(pid, int(fd.proc_fd), lc.ProcPidfdsocketinfo,
+				unsafe.Pointer(&socketFdInfo[pid][i]), size)
+
+			// Store the successfully read info
+			fmt.Printf(" \n bytes read: %d", bytesRead)
 		}
 	}
+	/*
+	   // Example: print a random socket
 
+	   	if len(socketFdInfo) > 0 {
+	   		randomPid := randomIndMap(socketFdInfo).(lc.Pid)
+	   		randomFdI := randomIndArr(socketFdInfo[randomPid])
+	   		fmt.Printf("✅ Random socket from PID %d:\n%+v\n", randomPid, socketFdInfo[randomPid][randomFdI])
+	   	} else {
+
+	   		fmt.Println("⚠️ No socket data collected.")
+	   	}
+	*/
 }

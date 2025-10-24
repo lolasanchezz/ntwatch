@@ -266,20 +266,3 @@ void goSocketStructs(struct socketInfo *goSocketData, int socketNum) {
   }
 }
 
-int main(int argc, char *argv[]) {
-  int amtPids;
-  int socketNum;
-
-  pid_t *allPidsArr = getPids(&amtPids);
-
-  pidsSocketsCountInternal(&socketNum, &amtPids, allPidsArr);
-  struct socketInfo *goSocketData =
-      (struct socketInfo *)malloc(socketNum * sizeof(struct socketInfo));
-
-  goSocketStructs(goSocketData, socketNum);
-
-  // for testing purposes only
-  printSockets(goSocketData, socketNum);
-
-  return 0;
-}
