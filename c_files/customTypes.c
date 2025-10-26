@@ -1,3 +1,6 @@
+#include "customTypes.h"
+
+
 const int LOCAL_IPS_LEN = 16;
 const char LOCAL_IPS[][16] = {"10.",     // 10.0.0.0 – 10.255.255.255
                               "172.16.", // 172.16.0.0 – 172.31.255.255

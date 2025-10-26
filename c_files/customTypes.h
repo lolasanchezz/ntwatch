@@ -29,5 +29,5 @@ struct socketInfo {
 };
 
 //two primary functions which should be called from go
-void goSocketStructs(struct socketInfo *goSocketData, int socketNum);
+void goSocketStructs(void *goSocketData, int socketNum);
 void socketCount(int *numSocketsPtr);

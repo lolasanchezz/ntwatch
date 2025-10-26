@@ -231,7 +231,7 @@ void printSockets(struct socketInfo *socketData, int socketNum) {
   }
 }
 
-void goSocketStructs(struct socketInfo *goSocketData, int socketNum) {
+void goSocketStructs(void *goSocketData, int socketNum) {
   int amtPids;
 
   pid_t *allPidsArr = getPids(&amtPids);
@@ -261,8 +261,10 @@ void goSocketStructs(struct socketInfo *goSocketData, int socketNum) {
   struct socketInfo *goSocketData =
       (struct socketInfo *)malloc(socketNum * sizeof(struct socketInfo));
 */
-  for (int i = 0; i < socketNum; i++) {
-    descSocket(&goSocketData[i], &socketDataArr[i]);
-  }
+// Replace line 264:
+struct socketInfo *socketData = (struct socketInfo *)goSocketData;
+for (int i = 0; i < socketNum; i++) {
+    descSocket(&socketData[i], &socketDataArr[i]);
+}
 }
 

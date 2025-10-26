@@ -3,9 +3,6 @@ package main
 import (
 	"unicode"
 	"unicode/utf8"
-
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/google/gopacket"
 )
 
 func lookThroughBody(body []byte) string {
@@ -59,34 +56,3 @@ func countLetters(b []byte) int {
 }
 
 /// bubble tea viewing
-
-type payloadViewer struct {
-	currentData string
-	packets     chan gopacket.Packet
-}
-
-func (m *payloadViewer) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-
-	select {
-	case pkt := <-m.packets:
-		if pkt.ApplicationLayer() != nil {
-			m.currentData = lookThroughBody(pkt.ApplicationLayer().Payload())
-		}
-	default:
-		m.currentData = "no packets yet"
-	}
-
-	//m.currentData = "e"
-	return m, nil
-}
-
-func (m *payloadViewer) Init() tea.Cmd {
-	m.currentData = ""
-	m.packets = make(chan gopacket.Packet)
-	return nil
-}
-
-func (m *payloadViewer) View() string {
-
-	return m.currentData
-}
