@@ -3,6 +3,7 @@ package main
 import (
 	"io"
 	"log"
+	"time"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/pcap"
@@ -14,6 +15,7 @@ type model struct {
 	payloadViewer *payloadViewer
 	packetChannel chan gopacket.Packet
 	packetSource  *gopacket.PacketSource
+	sockets       socketsInfo
 }
 
 type packetMsg gopacket.Packet
@@ -21,9 +23,8 @@ type packetMsg gopacket.Packet
 func initialModel() model {
 	m := model{
 		packetChannel: make(chan gopacket.Packet),
-		payloadViewer: &payloadViewer{
-			packets: make(chan gopacket.Packet),
-		},
+		payloadViewer: &payloadViewer{},
+		sockets:       socketsInfo{sockets: make(socketMap), timeout: time.Now()},
 	}
 	return m
 }
@@ -51,6 +52,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case packetMsg:
 		return m, tea.Batch(append(cmds, waitForPacket(m.packetChannel))...)
+
 	case tea.KeyMsg:
 		switch msg.Type {
 		case tea.KeyCtrlC:

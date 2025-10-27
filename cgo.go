@@ -12,7 +12,15 @@ import (
 	"unsafe"
 )
 
-func getCStruct() {
+type socketKey struct {
+	ProcessName string
+	DestIP      string
+	Port        int32
+}
+
+type socketMap map[socketKey]*socketsDef
+
+func getCStruct() *socketMap {
 	//first get amt of sockets
 
 	var sockets C.int
@@ -20,24 +28,16 @@ func getCStruct() {
 	fmt.Print(sockets)
 
 	var socketInfo = make([]socketsDef, sockets)
+	var goSocketInfo = make(socketMap, sockets)
 	C.goSocketStructs(unsafe.Pointer(&socketInfo[0]), sockets)
 	for _, socket := range socketInfo {
-		name := C.GoString((*C.char)(unsafe.Pointer(&socket.ProcessName[0])))
-		fmt.Printf("Process Name: %s\n", name)
-		fmt.Printf("Listening: %d\n", socket.Listening)
-		DestipAddr := C.GoString((*C.char)(unsafe.Pointer(&socket.DestIPAddr[0])))
-		fmt.Printf("Dest Ip, %s\n", DestipAddr)
-	}
-}
-
-func bytesToStr(arr [32]int8) string {
-	b := make([]byte, 0, len(arr))
-	for _, c := range arr {
-		if c == 0 {
-			break
+		key := socketKey{
+			ProcessName: C.GoString((*C.char)(unsafe.Pointer(&socket.ProcessName[0]))),
+			DestIP:      C.GoString((*C.char)(unsafe.Pointer(&socket.DestIPAddr[0]))),
+			Port:        int32(socket.SourcePort),
 		}
-		b = append(b, byte(c))
-	}
+		goSocketInfo[key] = &socket
 
-	return string(b)
+	}
+	return &goSocketInfo
 }
