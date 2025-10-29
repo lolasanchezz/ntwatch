@@ -214,6 +214,7 @@ void descSocket(struct socketInfo *info,
       info->destIPAddr[0] == LISTENING_IP_PREFIX2[0]) {
     info->listening = 1;
   }
+  
 }
 
 void printSockets(struct socketInfo *socketData, int socketNum) {

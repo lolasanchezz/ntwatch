@@ -13,7 +13,9 @@ import (
 
 type packetProtocol string
 
+/*
 const (
+
 	Arp  packetProtocol = "Arp"
 	IPv4 packetProtocol = "IPv4"
 	IPv6 packetProtocol = "IPv6"
@@ -21,8 +23,9 @@ const (
 	DNS  packetProtocol = "DNS"
 	TLS  packetProtocol = "TLS"
 	TCP  packetProtocol = "TCP"
-)
 
+)
+*/
 type PacketInfo struct {
 	packetProtocol gopacket.LayerType
 	sourceIP       string
@@ -50,8 +53,11 @@ func handlePacketsv1(packet gopacket.PacketSource, ch chan string) {
 	fmt.Print("running")
 
 	for p := range packet.Packets() {
-
-		src, dest := p.NetworkLayer().NetworkFlow().Endpoints()
+		netLayer := p.NetworkLayer()
+		if netLayer == nil {
+			continue
+		}
+		src, dest := netLayer.NetworkFlow().Endpoints()
 		srcIp := fmt.Sprint(src)
 		destIp := fmt.Sprint(dest)
 		fmt.Print(srcIp, destIp)
@@ -97,7 +103,7 @@ func getIPs(packet gopacket.PacketSource) PacketInfo {
 		return packetInfo
 	}
 
-	src, dest = p.NetworkLayer().NetworkFlow().Endpoints()
+	src, dest = netLayer.NetworkFlow().Endpoints()
 	if !((src == pastIPs[0]) && (dest == pastIPs[1])) && !((src == pastIPs[1]) && (dest == pastIPs[0])) {
 		//means that this is a new flow
 		//	fmt.Print("\n")
