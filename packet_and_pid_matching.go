@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -19,37 +20,44 @@ type RefreshSocketTableMsg struct{}
 // socket table IS refreshed
 type SocketTableRefreshedMsg struct{ socks *socketMap }
 
-// matched packet
+// matched packet to process
 type matchedPkt struct {
 	socketKey  packetMsg
 	socketInfo *socketsDef
 }
 
-func (info *socketsInfo) manageProcesses(msg tea.Msg) tea.Cmd {
+/*
+manage process - a function that's supposed to match incoming packets to already known
+packets, manage the sockets coming in, and signal when to refresh the socket table
+*/
+func (m *model) manageProcesses(msg tea.Msg) tea.Cmd {
 
 	switch msg.(type) {
 	case packetMsg:
 		return func() tea.Msg {
-			return info.matchPktToProcess(msg.(packetMsg))
+			return m.matchPktToProcess(msg.(packetMsg))
 		}
 	case RefreshSocketTableMsg:
 		return func() tea.Msg {
-			return refreshSockets()
+			return m.refreshSockets()
 		}
 	case SocketTableRefreshedMsg:
-		info.timeout = time.Now()
-		info.sockets = *msg.(SocketTableRefreshedMsg).socks
+		m.timeout = time.Now()
+		m.sockets = *msg.(SocketTableRefreshedMsg).socks
 		return nil
 	}
 	return nil
 }
 
-func (info *socketsInfo) matchPktToProcess(pkt packetMsg) tea.Cmd {
+func (m *model) matchPktToProcess(pkt packetMsg) tea.Cmd {
 	//first check type of packet, either cast them to udp or tcp
 	var srcPort int32
 	var dstPort int32
 	var connType int32
 
+	_ = srcPort
+	_ = dstPort
+	_ = connType
 	// Check if packet has a network layer
 	netLayer := pkt.NetworkLayer()
 	if netLayer == nil {
@@ -75,8 +83,14 @@ func (info *socketsInfo) matchPktToProcess(pkt packetMsg) tea.Cmd {
 	// Get network flow
 	netFlow := netLayer.NetworkFlow()
 	destIP := netFlow.Dst().String()
-	for i, sock := range info.sockets {
-		if (i.DestIP == destIP) && (i.SrcPort == srcPort) && (i.DestPort == dstPort) && (i.ConnType == connType) {
+	for i, sock := range m.sockets {
+		if i.DestIP == destIP { // && (i.SrcPort == srcPort) && (i.DestPort == dstPort) && (i.ConnType == connType) {
+			// append debug message to file
+			f, err := os.OpenFile("./debug.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+			if err == nil {
+				_, _ = f.WriteString("\n matched")
+				_ = f.Close()
+			}
 			return func() tea.Msg {
 				return matchedPkt{socketKey: pkt, socketInfo: sock}
 			}
@@ -88,7 +102,11 @@ func (info *socketsInfo) matchPktToProcess(pkt packetMsg) tea.Cmd {
 	}
 }
 
-func refreshSockets() tea.Cmd {
+func (m *model) refreshSockets() tea.Cmd {
+	m.sockets = *getCStruct()
+	for i, _ := range m.sockets {
+		writeToDebug(i.ProcessName + "\n")
+	}
 	return func() tea.Msg {
 		return SocketTableRefreshedMsg{socks: getCStruct()}
 	}
