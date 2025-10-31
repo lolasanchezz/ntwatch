@@ -17,12 +17,15 @@ type model struct {
 	packetChannel chan gopacket.Packet
 	packetSource  *gopacket.PacketSource
 	sockets       socketMap
-	timeout       time.Time
+	timeKeeping   timeKeeping
+	width         int
+	height        int
 }
 
-type entirePacket struct {
-	packet  gopacket.Packet
-	process socketsDef
+type timeKeeping struct {
+	pastTime time.Time
+	tickTime time.Duration
+	curTime  time.Time
 }
 
 // recieved message from wire
@@ -33,7 +36,7 @@ func initialModel() model {
 	m := model{
 		payloadViewer: &payloadViewer{table: table.New()},
 		sockets:       make(socketMap),
-		timeout:       time.Now(),
+		timeKeeping:   timeKeeping{pastTime: time.Now(), tickTime: time.Second, curTime: time.Now()},
 	}
 	m.payloadViewerInit()
 
@@ -55,6 +58,7 @@ func (m model) Init() tea.Cmd {
 		waitForPacket(m.packetChannel),
 		readFromWire(m.packetChannel, m.packetSource),
 		m.refreshSockets(),
+		doTick(),
 	)
 }
 
@@ -71,6 +75,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 
 	switch msg := msg.(type) {
+	case tickSecondPassed:
+		cmds = append(cmds, []tea.Cmd{m.manageProcesses(msg), doTick()}...)
+
+	case tea.WindowSizeMsg:
+		m.width = msg.Width
+		m.height = msg.Height
 
 	case packetMsg:
 		cmds = append(cmds, waitForPacket(m.packetChannel), m.manageProcesses(msg))
@@ -111,4 +121,12 @@ func waitForPacket(packetChannel chan gopacket.Packet) tea.Cmd {
 	return func() tea.Msg {
 		return packetMsg(<-packetChannel)
 	}
+}
+
+type tickSecondPassed time.Time
+
+func doTick() tea.Cmd {
+	return tea.Tick(time.Second, func(t time.Time) tea.Msg {
+		return tickSecondPassed(t)
+	})
 }

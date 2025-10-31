@@ -7,6 +7,7 @@ import (
 
 	"github.com/charmbracelet/bubbles/table"
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
 type payloadViewer struct {
@@ -16,29 +17,40 @@ type payloadViewer struct {
 }
 
 func (m *model) payloadViewerUpdate(msg tea.Msg) (model, tea.Cmd) {
+	var cmd tea.Cmd
+	m.payloadViewer.table, cmd = m.payloadViewer.table.Update(msg)
+
+	// Ensure columns exist before resize
+	if len(m.payloadViewer.table.Columns()) == 0 {
+		m.payloadViewerInit()
+	}
+	m.resizeTable()
+
+	changed := false
+
+	// Build rows if empty once
 	if len(m.payloadViewer.currentRows) == 0 {
 		m.updateRows(&m.sockets)
-	}
-	writeToDebug(strconv.Itoa((len(m.payloadViewer.currentRows))))
-	m.payloadViewer.table.SetRows(m.payloadViewer.currentRows)
-	switch msg.(type) {
-	case matchedPkt:
-		//update table - will do later!
-	case SocketTableRefreshedMsg:
-		m.updateRows(&m.sockets)
+		changed = true // ensure SetRows runs at least once
 	}
 
-	//m.payloadViewer.viewport.SetContent(m.payloadViewer.currentData)
-	/*
-		switch msg.(type) {
-		case packetMsg:
-			m.payloadViewer.currentData = msg.(packetMsg).NetworkLayer().NetworkFlow().Dst().String()
-		default:
-			m.payloadViewer.currentData = "no packets yet"
+	switch ev := msg.(type) {
+	case matchedPkt:
+		// if this should update rows, set changed = true and call updateRows
+	case SocketTableRefreshedMsg:
+		if ev.socks != nil {
+			m.sockets = *ev.socks
 		}
-		//m.currentData = "e"
-	*/
-	return *m, nil
+		m.updateRows(&m.sockets)
+		changed = true
+	}
+
+	// Apply rows AFTER any updates
+	if changed {
+		m.payloadViewer.table.SetRows(m.payloadViewer.currentRows)
+	}
+
+	return *m, cmd
 }
 func (m *model) updateRows(socketTable *socketMap) {
 	tempArr := make(map[socketKey]table.Row)
@@ -75,7 +87,22 @@ func (m *model) updateRows(socketTable *socketMap) {
 }
 
 func (m *model) payloadViewerInit() tea.Cmd {
-	m.payloadViewer.table = table.New()
+	m.payloadViewer.table = table.New(
+		table.WithFocused(true),
+	)
+
+	s := table.DefaultStyles()
+	s.Header = s.Header.
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderForeground(lipgloss.Color("240")).
+		BorderBottom(true).
+		Bold(false)
+	s.Selected = s.Selected.
+		Foreground(lipgloss.Color("229")).
+		Background(lipgloss.Color("57")).
+		Bold(false)
+	m.payloadViewer.table.SetStyles(s)
+
 	m.payloadViewer.table.SetColumns([]table.Column{
 		{Title: "Process Name", Width: 18},
 		{Title: "Dest IP", Width: 18},
@@ -100,4 +127,18 @@ func writeToDebug(str string) {
 		_, _ = f.WriteString(str + "\n")
 		_ = f.Close()
 	}
+}
+
+func (m *model) resizeTable() {
+	padding := 3
+	colWidth := (m.width - padding) / len(m.payloadViewer.table.Columns())
+
+	tmp := []table.Column{}
+	for _, col := range m.payloadViewer.table.Columns() {
+		col.Width = colWidth
+		tmp = append(tmp, col)
+	}
+	//	m.payloadViewer.table.SetWidth(m.width)
+	m.payloadViewer.table.SetColumns(tmp)
+	m.payloadViewer.table.SetHeight(m.height)
 }

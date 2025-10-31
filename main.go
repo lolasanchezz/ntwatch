@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	p := tea.NewProgram(initialModel())
+	p := tea.NewProgram(initialModel(), tea.WithMouseAllMotion())
 	if _, err := p.Run(); err != nil {
 		fmt.Printf("error : %v", err)
 		os.Exit(1)

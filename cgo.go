@@ -8,7 +8,6 @@ package main
 */
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -32,7 +31,6 @@ func getCStruct() *socketMap {
 
 	var sockets C.int
 	C.socketCount(&sockets)
-	fmt.Print(sockets)
 
 	var socketInfo = make([]socketsDef, sockets)
 	var goSocketInfo = make(socketMap, sockets)

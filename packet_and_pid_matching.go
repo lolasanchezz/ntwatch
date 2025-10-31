@@ -42,9 +42,16 @@ func (m *model) manageProcesses(msg tea.Msg) tea.Cmd {
 			return m.refreshSockets()
 		}
 	case SocketTableRefreshedMsg:
-		m.timeout = time.Now()
+
+		m.timeKeeping.pastTime = time.Now()
 		m.sockets = *msg.(SocketTableRefreshedMsg).socks
 		return nil
+
+	case tickSecondPassed:
+		writeToDebug("second passed \n")
+		return func() tea.Msg {
+			return m.refreshSockets()
+		}
 	}
 	return nil
 }
@@ -104,9 +111,7 @@ func (m *model) matchPktToProcess(pkt packetMsg) tea.Cmd {
 
 func (m *model) refreshSockets() tea.Cmd {
 	m.sockets = *getCStruct()
-	for i, _ := range m.sockets {
-		writeToDebug(i.ProcessName + "\n")
-	}
+
 	return func() tea.Msg {
 		return SocketTableRefreshedMsg{socks: getCStruct()}
 	}
