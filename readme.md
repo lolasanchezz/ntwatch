@@ -17,6 +17,6 @@ v1
         - live updating
         - visual representation of sockets connected to packets
 
-    ![img](./pics_for_readme/v1_ntwatch.png)
+![img](./pics_for_readme/v1_ntwatch.png)
     
-    [![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
