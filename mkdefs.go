@@ -3,7 +3,7 @@
 package main
 
 /*
-#include "c_files/customTypes.h"
+#include "./c_files/customTypes.h"
 */
 import "C"
 

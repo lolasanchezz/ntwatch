@@ -1,10 +1,8 @@
+#pragma once
 #include <stdlib.h>
 #define MAXCOMLEN 16
 #define LISTENING_IP_PREFIX "0"
 #define LISTENING_IP_PREFIX2 ":"
-#pragma once
-extern const char LOCAL_IPS[][16];
-extern const int LOCAL_IPS_LEN;
 
 
 typedef char ipAddr[16];
@@ -16,6 +14,10 @@ enum socket_type { UDP = 0, TCP };
 
 enum connection_type { IPV4 = 1, IPV6 };
 
+enum filter_listening {NO_LISTEN = 0, LISTEN = 1, BOTH_LISTEN_STATES = 2};
+enum filter_local {NO_LOCAL = 0, LOCAL = 1, BOTH_LOCAL_STATES = 2};
+
+
 struct socketInfo {
   pid_t pid;
   processName_t processName;
@@ -26,8 +28,7 @@ struct socketInfo {
   port destPort;
   int local;
   int listening;
+  char type;
 };
 
-//two primary functions which should be called from go
-void goSocketStructs(void *goSocketData, int socketNum);
-void socketCount(int *numSocketsPtr);
+
