@@ -1,5 +1,6 @@
 package main
 
+/*
 import (
 	"os"
 	"strconv"
@@ -137,3 +138,4 @@ func (m *model) resizeTable() {
 	m.payloadViewer.table.SetColumns(tmp)
 	m.payloadViewer.table.SetHeight(m.height)
 }
+*/

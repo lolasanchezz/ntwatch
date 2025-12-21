@@ -8,7 +8,7 @@ the goal is to create a mix between nettop and wireshark, while keeping it simpl
 a security overview rather than in depth testing.
  --> the biggest challenge is both figuring out macos's undocumented libproc kernel api, and synchronizing the packets/updating socket table properly through bubbletea's 
      elm architecture.
-v1
+v0.5
     does have
         - information about sockets
         - a clean(ish) tui with bubbletea
@@ -20,3 +20,8 @@ v1
 ![img](./pics_for_readme/v1_ntwatch.png)
     
 [![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
+
+
+v0.8
+planned design
+![img](./design.png)

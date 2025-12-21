@@ -9,14 +9,6 @@ import (
 	"unsafe"
 )
 
-type socketKey struct {
-	ProcessName string
-	DestIP      string
-	SrcPort     int32
-	DestPort    int32
-	ConnType    int32
-}
-
 const (
 	UDP = 0
 	TCP = 1

@@ -152,11 +152,14 @@ void socketCount(int *numSocketsPtr) {
 void descSocket(struct socketInfo *info,
                 struct socketinfo_andpid *socket_info) {
 
+  info->local = 0;
   info->pid = socket_info->pid;
   proc_name(socket_info->pid, info->processName, sizeof(processName_t));
-  char *noIP = "0";
-  strncpy(info->destIPAddr, noIP, strlen(noIP) * sizeof(char));
-  
+
+  /* Initialize destIPAddr safely */
+  strcpy(info->destIPAddr, "0");
+
+  /* TCP / UDP discrimination */
   if (socket_info->socketinfo.psi.soi_kind == SOCKINFO_IN) {
 
     info->socket_type = UDP;
@@ -165,83 +168,140 @@ void descSocket(struct socketInfo *info,
     info->destPort =
         ntohs(socket_info->socketinfo.psi.soi_proto.pri_in.insi_fport);
 
+    /* Unconnected or listening */
+    if (info->destPort == 0) {
+      info->listening = 1;
+      return;
+    }
+
     if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag == INI_IPV4) {
+      info->listening = 0;
 
       char ipStr[INET_ADDRSTRLEN];
       convAddrIpv4(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr
                        .ina_46.i46a_addr4.s_addr,
                    ipStr);
-      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
-    } else if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag == INI_IPV6) {
+      
+      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      struct in_addr v4;
+      if (inet_pton(AF_INET, info->destIPAddr, &v4) == 1) {
+        if ((ntohl(v4.s_addr) & 0xff000000) == 0x7f000000) {
+          info->local = 1;
+          return;
+        }
+      }
+
+    } else if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag ==
+               INI_IPV6) {
+
+      info->listening = 0;
+
       char ipStr[INET6_ADDRSTRLEN];
       convAddrIpv6(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_6
                        .__u6_addr.__u6_addr8,
                    ipStr);
-      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+
+      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      struct in6_addr v6;
+      if (inet_pton(AF_INET6, info->destIPAddr, &v6) == 1) {
+        if (IN6_IS_ADDR_LOOPBACK(&v6)) {
+          info->local = 1;
+          return;
+        }
+      }
     }
+
   } else if (socket_info->socketinfo.psi.soi_kind == SOCKINFO_TCP) {
+
     info->socket_type = TCP;
     info->sourcePort = ntohs(
         socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_lport);
     info->destPort = ntohs(
         socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_fport);
 
+    /* LISTEN sockets */
+    if (info->destPort == 0) {
+      info->listening = 1;
+      return;
+    }
+
     if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
         INI_IPV4) {
+
+      info->listening = 0;
       info->connection_type = IPV4;
+
       char ipStr[INET_ADDRSTRLEN];
       convAddrIpv4(socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini
                        .insi_faddr.ina_46.i46a_addr4.s_addr,
                    ipStr);
-      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+
+      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      // local detection
+      struct in_addr v4;
+      if (inet_pton(AF_INET, info->destIPAddr, &v4) == 1) {
+        if ((ntohl(v4.s_addr) & 0xff000000) == 0x7f000000) {
+          info->local = 1;
+          return;
+        }
+      }
+
     } else if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini
                    .insi_vflag == INI_IPV6) {
+
+      info->listening = 0;
       info->connection_type = IPV6;
+
       char ipStr[INET6_ADDRSTRLEN];
-      convAddrIpv6((const uint8_t *)&socket_info->socketinfo.psi.soi_proto
-                       .pri_tcp.tcpsi_ini.insi_faddr.ina_6,
+      convAddrIpv6(socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini
+                       .insi_faddr.ina_6.__u6_addr.__u6_addr8,
                    ipStr);
-      strncpy(info->destIPAddr, ipStr, sizeof(ipAddr));
+
+      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      struct in6_addr v6;
+      if (inet_pton(AF_INET6, info->destIPAddr, &v6) == 1) {
+        if (IN6_IS_ADDR_LOOPBACK(&v6)) {
+          info->local = 1;
+          return;
+        }
+      }
     }
   }
 
   
-
-  // Check first three characters against LOCAL_IPS
-  for (int i = 0; i < LOCAL_IPS_LEN; i++) {
-    if (strncmp(info->destIPAddr, LOCAL_IPS[i], strlen(LOCAL_IPS[i])) == 0) {
-      info->local = 1;
-      break; 
-    }
-  }
-
-  // Check first character against listening prefixes
-  if (info->destIPAddr[0] == LISTENING_IP_PREFIX[0] ||
-      info->destIPAddr[0] == LISTENING_IP_PREFIX2[0]) { 
-    info->listening = 1;
-  }
 }
 
-//utility functions for debugging
+// utility functions for debugging
 
-void logToFileInt (int x) {
+void logToFileInt(int x) {
   FILE *fp;
-   fp = fopen("../debug.txt", "a");
-   fprintf(fp, "\n socket num: %d", x);
-   fclose(fp);
+  fp = fopen("../debug.txt", "a");
+  fprintf(fp, "\n socket num: %d", x);
+  fclose(fp);
 }
 
-void logToFileStr (char *x) {
+void logToFileStr(char *x) {
   FILE *fp;
-   fp = fopen("./debug_c.txt", "a");
-   fprintf(fp, "\n socket num: %s", x);
-   fclose(fp);
+  fp = fopen("./debug_c.txt", "a");
+  fprintf(fp, "\n socket num: %s", x);
+  fclose(fp);
 }
 
 void printSockets(struct socketInfo *socketData, int socketNum, int log) {
-
+  remove("./debug_c.txt");
   for (int i = 0; i < socketNum; i++) {
-
+    if (log) {
+      char socketDesc[200];
+      snprintf(socketDesc, 200,
+               "process name: %s \n   - pid: %d \n   - connection type %d"
+               "\n   - ip %s \n   - local port %d\n   - foreign port %d \n   - "
+               "listening %d\n   - local %d\n",
+               socketData[i].processName, socketData[i].pid,
+               socketData[i].socket_type, socketData[i].destIPAddr,
+               socketData[i].sourcePort, socketData[i].destPort,
+               socketData[i].listening, socketData[i].local);
+      logToFileStr(socketDesc);
+    } else {
       printf("process name: %s \n   - pid: %d \n   - connection type %d"
              "\n   - ip %s \n   - local port %d\n   - foreign port %d \n   - "
              "listening %d\n   - local %d\n",
@@ -249,26 +309,14 @@ void printSockets(struct socketInfo *socketData, int socketNum, int log) {
              socketData[i].socket_type, socketData[i].destIPAddr,
              socketData[i].sourcePort, socketData[i].destPort,
              socketData[i].listening, socketData[i].local);
-
-      if (log) {
-        char socketDesc[170];
-        snprintf(socketDesc, 170, "process name: %s \n   - pid: %d \n   - connection type %d"
-             "\n   - ip %s \n   - local port %d\n   - foreign port %d \n   - "
-             "listening %d\n   - local %d\n",
-             socketData[i].processName, socketData[i].pid,
-             socketData[i].socket_type, socketData[i].destIPAddr,
-             socketData[i].sourcePort, socketData[i].destPort,
-             socketData[i].listening, socketData[i].local);
-        logToFileStr(socketDesc);
-      }
+      printf("about to log socket to file");
     }
-
-
+  }
 }
 
 void goSocketStructs(void *goSocketData, int *socketNum) {
   int amtPids;
-   
+
   pid_t *allPidsArr = getPids(&amtPids);
 
   pidsSocketsCountInternal(socketNum, &amtPids, allPidsArr);
@@ -296,11 +344,10 @@ void goSocketStructs(void *goSocketData, int *socketNum) {
   for (int i = 0; i < *socketNum; i++) {
     descSocket(&socketData[i], &socketDataArr[i]);
   }
-  printf("about to filter sockets\n");
-  printf("pre: %d\n", *socketNum);
-  filterSockets(NO_LISTEN, BOTH_LOCAL_STATES, socketData, socketNum);
-  printf("post: %d\n", *socketNum);
-
+ // printf("about to filter sockets\n");
+  //printf("pre: %d\n", *socketNum);
+  //filterSockets(NO_LISTEN, BOTH_LOCAL_STATES, socketData, socketNum);
+  //printf("post: %d\n", *socketNum);
 }
 
 void removeElement(struct socketInfo *socketArr, int *size, int index) {
@@ -313,24 +360,25 @@ void filterSockets(enum filter_listening listening_filter,
                    enum filter_local local_filter,
                    struct socketInfo *socketData, int *socketNum) {
 
-int write = 0;
+  int write = 0;
   for (int read = 0; read < *socketNum; read++) {
     int keep = 1;
-    if (local_filter != BOTH_LOCAL_STATES && socketData[read].local != local_filter) {
-        keep = 0;
-    }
-    else if (listening_filter != BOTH_LISTEN_STATES && socketData[read].listening != listening_filter) {
-        keep = 0;
+    if (local_filter != BOTH_LOCAL_STATES &&
+        socketData[read].local != local_filter) {
+      keep = 0;
+    } else if (listening_filter != BOTH_LISTEN_STATES &&
+               socketData[read].listening != listening_filter) {
+      keep = 0;
     }
     if (keep) {
-        if (write != read) {
-          printf("listening = %d\n", socketData[read].listening);
-          socketData[write] = socketData[read];
-        }
-        write++;
+      if (write != read) {
+    //    printf("listening = %d\n", socketData[read].listening);
+        socketData[write] = socketData[read];
+      }
+      write++;
     }
-}
-printf("%d", write);
-*socketNum = write;
-return;
+  }
+ // printf("%d", write);
+  *socketNum = write;
+  return;
 }

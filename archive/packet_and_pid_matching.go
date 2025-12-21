@@ -1,5 +1,6 @@
 package main
 
+/*
 import (
 	"os"
 	"time"
@@ -30,6 +31,7 @@ type matchedPkt struct {
 manage process - a function that's supposed to match incoming packets to already known
 packets, manage the sockets coming in, and signal when to refresh the socket table
 */
+/*
 func (m *model) manageProcesses(msg tea.Msg) tea.Cmd {
 
 	switch msg.(type) {
@@ -116,3 +118,4 @@ func (m *model) refreshSockets() tea.Cmd {
 		return SocketTableRefreshedMsg{socks: getCStruct()}
 	}
 }
+*/

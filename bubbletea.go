@@ -1,132 +1,52 @@
 package main
 
 import (
-	"io"
-	"log"
-	"time"
+	"strconv"
 
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/pcap"
-
-	"github.com/charmbracelet/bubbles/table"
-	tea "github.com/charmbracelet/bubbletea"
 )
 
 type model struct {
-	payloadViewer *payloadViewer
-	packetChannel chan gopacket.Packet
-	packetSource  *gopacket.PacketSource
-	sockets       socketMap
-	timeKeeping   timeKeeping
-	width         int
-	height        int
-}
-
-type timeKeeping struct {
-	pastTime time.Time
-	tickTime time.Duration
-	curTime  time.Time
+	handle       *pcap.Handle
+	unmatchedMsg PacketInfo
+	display      int
+	socketTable  socketMap
 }
 
 // recieved message from wire
 type packetMsg gopacket.Packet
+type getPacket struct{}
 
 func initialModel() model {
-
-	m := model{
-		payloadViewer: &payloadViewer{table: table.New()},
-		sockets:       make(socketMap),
-		timeKeeping:   timeKeeping{pastTime: time.Now(), tickTime: time.Second, curTime: time.Now()},
-	}
-	m.payloadViewerInit()
-
-	// Initialize packet source here since Init() receives model by value
-	handle, err := pcap.OpenLive("en0", 1600, true, pcap.BlockForever)
-	if err != nil {
-		panic(err)
-	}
-	m.packetSource = gopacket.NewPacketSource(handle, handle.LinkType())
-
-	m.packetChannel = make(chan gopacket.Packet)
-	return m
+	return model{}
 }
 
 func (m model) Init() tea.Cmd {
-	m = initialModel()
-	m.refreshSockets()
-	return tea.Batch(
-		waitForPacket(m.packetChannel),
-		readFromWire(m.packetChannel, m.packetSource),
-		m.refreshSockets(),
-		doTick(),
-	)
+	return func() tea.Msg { return wireInit() }
 }
 
 func (m model) View() string {
-	return m.payloadViewer.table.View()
+	return strconv.Itoa(m.display)
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	_, viewerCmd := m.payloadViewerUpdate(msg)
-
 	var cmds []tea.Cmd
-	if viewerCmd != nil {
-		cmds = append(cmds, viewerCmd)
-	}
 
 	switch msg := msg.(type) {
-	case tickSecondPassed:
-		cmds = append(cmds, []tea.Cmd{m.manageProcesses(msg), doTick()}...)
-
-	case tea.WindowSizeMsg:
-		m.width = msg.Width
-		m.height = msg.Height
-
-	case packetMsg:
-		cmds = append(cmds, waitForPacket(m.packetChannel), m.manageProcesses(msg))
-	case PacketInfo, RefreshSocketTableMsg, SocketTableRefreshedMsg:
-		cmds = append(cmds, []tea.Cmd{m.manageProcesses(msg)}...)
-	case matchedPkt:
-		var cmd tea.Cmd
-		m, cmd = m.payloadViewerUpdate(msg)
-		cmds = append(cmds, cmd)
+	case wireInitMsg:
+		m.handle = msg.handle
+		cmds = append(cmds, m.sendPacketCmd())
+	case WireDataMsg:
+		cmds = append(cmds, readPacketCmd(msg.data), m.sendPacketCmd())
+	case packetInfoMsg:
+		m.display++
 	case tea.KeyMsg:
-		if msg.Type == tea.KeyCtrlC {
+		switch msg.String() {
+		case "ctrl+c":
 			return m, tea.Quit
 		}
 	}
-
-	return m, tea.Batch(cmds...)
-}
-
-func readFromWire(packetChannel chan gopacket.Packet, packetSource *gopacket.PacketSource) tea.Cmd {
-	return func() tea.Msg {
-		go func() {
-			for {
-				p, err := packetSource.NextPacket()
-				if err == io.EOF {
-					return
-				} else if err != nil {
-					log.Println("Error:", err)
-					continue
-				}
-				packetChannel <- p
-			}
-		}()
-		return nil
-	}
-}
-
-func waitForPacket(packetChannel chan gopacket.Packet) tea.Cmd {
-	return func() tea.Msg {
-		return packetMsg(<-packetChannel)
-	}
-}
-
-type tickSecondPassed time.Time
-
-func doTick() tea.Cmd {
-	return tea.Tick(time.Second, func(t time.Time) tea.Msg {
-		return tickSecondPassed(t)
-	})
+	return m, nil
 }

@@ -1,9 +1,12 @@
 package main
 
+/*
 import (
+	"fmt"
+	"io"
+	"log"
 	"net"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
@@ -11,7 +14,7 @@ import (
 
 type packetProtocol string
 
-/*
+
 const (
 
 	Arp  packetProtocol = "Arp"
@@ -23,50 +26,56 @@ const (
 	TCP  packetProtocol = "TCP"
 
 )
-*/
 
-type wireInitMsg struct{ handle *pcap.Handle }
 
-func wireInit() wireInitMsg {
+func givePackets() PacketInfo {
 	// first connect to en0
 	handle, err := pcap.OpenLive("en0", 1600, true, pcap.BlockForever)
 	if err != nil {
 		panic(err)
 	}
 
-	return wireInitMsg{handle: handle}
+	packetSource := gopacket.NewPacketSource(handle, handle.LinkType())
+
+	return getIPs(*packetSource)
 
 }
 
-type WireDataMsg struct{ data gopacket.Packet }
+func handlePacketsv1(packet gopacket.PacketSource, ch chan string) {
+	fmt.Print("running")
 
-func (m model) sendPacketCmd() tea.Cmd {
-	return func() tea.Msg {
-		packet, _, err := m.handle.ReadPacketData()
-		if err != nil {
-			panic(err)
+	for p := range packet.Packets() {
+		netLayer := p.NetworkLayer()
+		if netLayer == nil {
+			continue
 		}
+		src, dest := netLayer.NetworkFlow().Endpoints()
+		srcIp := fmt.Sprint(src)
+		destIp := fmt.Sprint(dest)
+		fmt.Print(srcIp, destIp)
+		//ch <- fmt.Sprint(src)
+		//ch <- fmt.Sprint(dest)
 
-		return WireDataMsg{
-			data: gopacket.NewPacket(packet, layers.LayerTypeEthernet, gopacket.Default),
-		}
 	}
 }
 
-type packetInfoMsg struct{ data PacketInfo }
-
-func readPacketCmd(packet gopacket.Packet) tea.Cmd {
-	return func() tea.Msg {
-		return packetInfoMsg{data: getIPs(packet)}
-	}
-}
-
-func getIPs(p gopacket.Packet) PacketInfo {
+func getIPs(packet gopacket.PacketSource) PacketInfo {
 
 	var pastIPs [2]gopacket.Endpoint
 	var src gopacket.Endpoint
 	var dest gopacket.Endpoint
 	var packetInfo PacketInfo
+	//for {
+
+	p, err := packet.NextPacket()
+	if err == io.EOF {
+		packetInfo.eof = true
+		return packetInfo
+
+	} else if err != nil {
+		log.Println("Error:", err)
+		return packetInfo
+	}
 
 	if p.ApplicationLayer() != nil {
 		packetInfo.appData = p.ApplicationLayer().Payload()
@@ -106,6 +115,7 @@ func getIPs(p gopacket.Packet) PacketInfo {
 		}
 
 	}
-	return packetInfo
 
+	return packetInfo
 }
+*/

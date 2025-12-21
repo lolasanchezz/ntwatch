@@ -1,5 +1,6 @@
 package main
 
+/*
 import (
 	"fmt"
 	"log"
@@ -107,16 +108,6 @@ func test() {
 			fmt.Printf(" \n bytes read: %d", bytesRead)
 		}
 	}
-	/*
-	   // Example: print a random socket
 
-	   	if len(socketFdInfo) > 0 {
-	   		randomPid := randomIndMap(socketFdInfo).(lc.Pid)
-	   		randomFdI := randomIndArr(socketFdInfo[randomPid])
-	   		fmt.Printf("✅ Random socket from PID %d:\n%+v\n", randomPid, socketFdInfo[randomPid][randomFdI])
-	   	} else {
-
-	   		fmt.Println("⚠️ No socket data collected.")
-	   	}
-	*/
 }
+*/
