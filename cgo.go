@@ -7,6 +7,8 @@ package main
 import "C"
 import (
 	"unsafe"
+
+	tea "github.com/charmbracelet/bubbletea"
 )
 
 const (
@@ -14,7 +16,8 @@ const (
 	TCP = 1
 )
 
-type socketMap map[socketKey]*socketsDef
+type socketMap []socketKey
+type socketMapMsg struct{ data *socketMap }
 
 func getCStruct() *socketMap {
 
@@ -24,18 +27,51 @@ func getCStruct() *socketMap {
 	var socketInfo = make([]socketsDef, sockets)
 	var goSocketInfo = make(socketMap, sockets)
 	C.goSocketStructs(unsafe.Pointer(&socketInfo[0]), &sockets)
-	filteredSockets := int(sockets)
-	for i := 0; i < filteredSockets; i++ {
+
+	for i := 0; i < len(socketInfo); i++ {
 		socket := socketInfo[i]
 		key := socketKey{
-			ProcessName: C.GoString((*C.char)(unsafe.Pointer(&socket.ProcessName[0]))),
-			DestIP:      C.GoString((*C.char)(unsafe.Pointer(&socket.DestIPAddr[0]))),
+			ProcessName: cStringToGo32(socket.ProcessName),
+			DestIP:      cStringToGo16(socket.DestIPAddr),
 			SrcPort:     int32(socket.SourcePort),
 			DestPort:    int32(socket.DestPort),
 			ConnType:    int32(socket.Connection_type),
 		}
-		goSocketInfo[key] = &socket
+		goSocketInfo[i] = key
 
 	}
 	return &goSocketInfo
+}
+
+func cStringToGo32(b [32]int8) string {
+	n := 0
+	for ; n < len(b); n++ {
+		if b[n] == 0 { //if the string has ended
+			break
+		}
+	}
+	bytes := make([]byte, n)
+	for i := 0; i < n; i++ {
+		bytes[i] = byte(b[i])
+	}
+	return string(bytes)
+}
+
+func cStringToGo16(b [16]int8) string {
+	n := 0
+	for ; n < len(b); n++ {
+		if b[n] == 0 { //if the string has ended
+			break
+		}
+	}
+	bytes := make([]byte, n)
+	for i := 0; i < n; i++ {
+		bytes[i] = byte(b[i])
+	}
+	return string(bytes)
+}
+func getCStructCmd() tea.Cmd {
+	return func() tea.Msg {
+		return socketMapMsg{data: getCStruct()}
+	}
 }

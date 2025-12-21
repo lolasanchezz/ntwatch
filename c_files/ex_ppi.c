@@ -155,10 +155,9 @@ void descSocket(struct socketInfo *info,
   info->local = 0;
   info->pid = socket_info->pid;
   proc_name(socket_info->pid, info->processName, sizeof(processName_t));
-
+  info->processName[31] = '\0';
   /* Initialize destIPAddr safely */
   strcpy(info->destIPAddr, "0");
-
   /* TCP / UDP discrimination */
   if (socket_info->socketinfo.psi.soi_kind == SOCKINFO_IN) {
 
@@ -181,8 +180,9 @@ void descSocket(struct socketInfo *info,
       convAddrIpv4(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr
                        .ina_46.i46a_addr4.s_addr,
                    ipStr);
-      
-      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+
+      strlcpy(info->destIPAddr, ipStr,
+              sizeof(info->destIPAddr)); // local detection
       struct in_addr v4;
       if (inet_pton(AF_INET, info->destIPAddr, &v4) == 1) {
         if ((ntohl(v4.s_addr) & 0xff000000) == 0x7f000000) {
@@ -201,7 +201,8 @@ void descSocket(struct socketInfo *info,
                        .__u6_addr.__u6_addr8,
                    ipStr);
 
-      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      strlcpy(info->destIPAddr, ipStr,
+              sizeof(info->destIPAddr)); // local detection
       struct in6_addr v6;
       if (inet_pton(AF_INET6, info->destIPAddr, &v6) == 1) {
         if (IN6_IS_ADDR_LOOPBACK(&v6)) {
@@ -236,7 +237,8 @@ void descSocket(struct socketInfo *info,
                        .insi_faddr.ina_46.i46a_addr4.s_addr,
                    ipStr);
 
-      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      strlcpy(info->destIPAddr, ipStr,
+              sizeof(info->destIPAddr)); // local detection
       // local detection
       struct in_addr v4;
       if (inet_pton(AF_INET, info->destIPAddr, &v4) == 1) {
@@ -257,7 +259,8 @@ void descSocket(struct socketInfo *info,
                        .insi_faddr.ina_6.__u6_addr.__u6_addr8,
                    ipStr);
 
-      strlcpy(info->destIPAddr, ipStr, sizeof(info->destIPAddr));      // local detection
+      strlcpy(info->destIPAddr, ipStr,
+              sizeof(info->destIPAddr)); // local detection
       struct in6_addr v6;
       if (inet_pton(AF_INET6, info->destIPAddr, &v6) == 1) {
         if (IN6_IS_ADDR_LOOPBACK(&v6)) {
@@ -267,8 +270,6 @@ void descSocket(struct socketInfo *info,
       }
     }
   }
-
-  
 }
 
 // utility functions for debugging
@@ -344,10 +345,10 @@ void goSocketStructs(void *goSocketData, int *socketNum) {
   for (int i = 0; i < *socketNum; i++) {
     descSocket(&socketData[i], &socketDataArr[i]);
   }
- // printf("about to filter sockets\n");
-  //printf("pre: %d\n", *socketNum);
-  //filterSockets(NO_LISTEN, BOTH_LOCAL_STATES, socketData, socketNum);
-  //printf("post: %d\n", *socketNum);
+  // printf("about to filter sockets\n");
+  // printf("pre: %d\n", *socketNum);
+  // filterSockets(NO_LISTEN, BOTH_LOCAL_STATES, socketData, socketNum);
+  // printf("post: %d\n", *socketNum);
 }
 
 void removeElement(struct socketInfo *socketArr, int *size, int index) {
@@ -372,13 +373,13 @@ void filterSockets(enum filter_listening listening_filter,
     }
     if (keep) {
       if (write != read) {
-    //    printf("listening = %d\n", socketData[read].listening);
+        //    printf("listening = %d\n", socketData[read].listening);
         socketData[write] = socketData[read];
       }
       write++;
     }
   }
- // printf("%d", write);
+  // printf("%d", write);
   *socketNum = write;
   return;
 }

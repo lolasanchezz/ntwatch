@@ -28,7 +28,6 @@ struct socketInfo {
   port destPort;
   int local;
   int listening;
-  char type;
 };
 
 
