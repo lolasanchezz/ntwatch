@@ -6,6 +6,7 @@ package main
 */
 import "C"
 import (
+	"strconv"
 	"unsafe"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -33,8 +34,8 @@ func getCStruct() *socketMap {
 		key := socketKey{
 			ProcessName: cStringToGo32(socket.ProcessName),
 			DestIP:      cStringToGo16(socket.DestIPAddr),
-			SrcPort:     int32(socket.SourcePort),
-			DestPort:    int32(socket.DestPort),
+			SrcPort:     strconv.Itoa(int(int32(socket.SourcePort))),
+			DestPort:    strconv.Itoa(int(int32(socket.DestPort))),
 			ConnType:    int32(socket.Connection_type),
 		}
 		goSocketInfo[i] = key

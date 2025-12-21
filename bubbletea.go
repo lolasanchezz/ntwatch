@@ -18,11 +18,12 @@ func doTick() tea.Cmd {
 }
 
 type model struct {
-	handle       *pcap.Handle
-	unmatchedMsg PacketInfo
-	display      string
-	timer        int
-	socketTable  *socketMap
+	handle          *pcap.Handle
+	unmatchedPacket []PacketInfo
+	display         string
+	timer           int
+	socketTable     *socketMap
+	matchedPackets  []processAndPacket
 }
 
 func initialModel() model {
@@ -34,7 +35,8 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) View() string {
-	return strconv.Itoa(m.timer) + "\n" + m.display
+
+	return strconv.Itoa(m.timer) + "\n" + m.display + "\n"
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -47,19 +49,32 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case WireDataMsg:
 		cmds = append(cmds, readPacketCmd(msg.data), m.sendPacketCmd())
 	case packetInfoMsg:
-	//	m.display = msg.data.destIP //for testing
+		//	m.display = msg.data.destIP //for testing
+		cmds = append(cmds, m.matchPacketsCmd(msg))
 	case TickMsg:
 		m.timer++
 		cmds = append(cmds, doTick(), getCStructCmd())
 		//refresh socket table
 	case socketMapMsg:
 		m.socketTable = msg.data
+		/* testing
 		for _, val := range *m.socketTable {
 			m.display = val.ProcessName
 			return m, tea.Batch(cmds...)
 		}
-
+		*/
 		//todo - look at unmatched packets
+	case matchedPacketMsg:
+		if msg.data.process == (socketKey{}) { //unmatched
+			m.unmatchedPacket = append(m.unmatchedPacket, msg.data.packet)
+			cmds = append(cmds, getCStructCmd())
+			m.display = "unmatched"
+		} else {
+			m.matchedPackets = append(m.matchedPackets, msg.data)
+			m.display = msg.data.packet.destIP
+
+		}
+
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "ctrl+c":

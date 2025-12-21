@@ -5,8 +5,8 @@ import "github.com/google/gopacket"
 type socketKey struct {
 	ProcessName string
 	DestIP      string
-	SrcPort     int32
-	DestPort    int32
+	SrcPort     string
+	DestPort    string
 	ConnType    int32
 }
 
