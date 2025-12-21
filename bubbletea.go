@@ -1,8 +1,6 @@
 package main
 
 import (
-	"strconv"
-
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/pcap"
@@ -11,7 +9,7 @@ import (
 type model struct {
 	handle       *pcap.Handle
 	unmatchedMsg PacketInfo
-	display      int
+	display      string
 	socketTable  socketMap
 }
 
@@ -28,7 +26,7 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) View() string {
-	return strconv.Itoa(m.display)
+	return m.display
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -41,12 +39,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case WireDataMsg:
 		cmds = append(cmds, readPacketCmd(msg.data), m.sendPacketCmd())
 	case packetInfoMsg:
-		m.display++
+		m.display = msg.data.destIP
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "ctrl+c":
 			return m, tea.Quit
 		}
 	}
-	return m, nil
+	return m, tea.Batch(cmds...)
 }
