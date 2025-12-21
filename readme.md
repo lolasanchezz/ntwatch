@@ -24,4 +24,4 @@ v0.5
 
 v0.8
 planned design
-![img](./design.png)
+![img](./pics_for_readme/design.png)
