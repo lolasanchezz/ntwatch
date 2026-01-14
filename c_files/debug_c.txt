@@ -1,0 +1,4998 @@
+
+ socket num: process name: com.apple.geod 
+   - pid: 59440 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.geod 
+   - pid: 59439 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.geod 
+   - pid: 59433 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: amsengagementd 
+   - pid: 59007 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: cdpd 
+   - pid: 58337 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: findmylocateagent 
+   - pid: 58331 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: idleassetsd 
+   - pid: 58273 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: CommCenter 
+   - pid: 58226 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: CommCenter 
+   - pid: 58226 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: CommCenter 
+   - pid: 58226 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: VTEncoderXPCService 
+   - pid: 58116 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Obsidian 
+   - pid: 58105 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: amsondevicestoraged 
+   - pid: 58021 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: backgroundtaskmanagementd 
+   - pid: 58020 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: swcd 
+   - pid: 58016 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: replicatord 
+   - pid: 57967 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: replicatord 
+   - pid: 57967 
+   - connection type 0
+   - ip 0 
+   - local port 58516
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: replicatord 
+   - pid: 57967 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rtcreportingd 
+   - pid: 55756 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: siriactionsd 
+   - pid: 55228 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: NewsToday2 
+   - pid: 53294 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: clangd 
+   - pid: 52021 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: clangd 
+   - pid: 52021 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: clangd 
+   - pid: 52021 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 52020 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 52020 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 52020 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 52020 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Python 
+   - pid: 51835 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 50047 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 50047 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 50047 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 50047 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: gopls 
+   - pid: 49999 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: gopls 
+   - pid: 49999 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: gopls 
+   - pid: 49999 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49743 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49743 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49743 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49743 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 1
+   - ip 0 
+   - local port 55878
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper (Plugin) 
+   - pid: 49514 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Code Helper 
+   - pid: 48841 
+   - connection type 1
+   - ip 52.168.117.171 
+   - local port 55446
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Electron 
+   - pid: 48835 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Electron 
+   - pid: 48835 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper (Renderer) 
+   - pid: 46884 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: appleaccountd 
+   - pid: 42465 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: PerfPowerServices 
+   - pid: 42376 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: netbiosd 
+   - pid: 41686 
+   - connection type 0
+   - ip 0 
+   - local port 137
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: netbiosd 
+   - pid: 41686 
+   - connection type 0
+   - ip 0 
+   - local port 138
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: netbiosd 
+   - pid: 41686 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: netbiosd 
+   - pid: 41686 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: networkserviceproxy 
+   - pid: 39252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: networkserviceproxy 
+   - pid: 39252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: networkserviceproxy 
+   - pid: 39252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: networkserviceproxy 
+   - pid: 39252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: networkserviceproxy 
+   - pid: 39252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: networkserviceproxy 
+   - pid: 39252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: secinitd 
+   - pid: 38848 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: pkd 
+   - pid: 37611 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: newsd 
+   - pid: 37585 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: homed 
+   - pid: 37543 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: homed 
+   - pid: 37543 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: homed 
+   - pid: 37543 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: dataaccessd 
+   - pid: 37515 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: ContextStoreAgent 
+   - pid: 37500 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: amsaccountsd 
+   - pid: 36529 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: amsaccountsd 
+   - pid: 36529 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: donotdisturbd 
+   - pid: 36416 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: CloudTelemetryService 
+   - pid: 36408 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: suggestd 
+   - pid: 36398 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: cloudd 
+   - pid: 36397 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Music 
+   - pid: 35245 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Music 
+   - pid: 35245 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Music 
+   - pid: 35245 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Music 
+   - pid: 35245 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 34778 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.appkit.xpc.openAndSav 
+   - pid: 34079 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: callservicesd 
+   - pid: 33932 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mobileassetd 
+   - pid: 33714 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 29272 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: appstoreagent 
+   - pid: 29199 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifivelocityd 
+   - pid: 21690 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: VTDecoderXPCService 
+   - pid: 16644 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: passd 
+   - pid: 16586 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Hand Mirror 
+   - pid: 15715 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 15418 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: searchpartyuseragent 
+   - pid: 13216 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 13043 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifip2pd 
+   - pid: 12996 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Helper 
+   - pid: 8361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Helper 
+   - pid: 8361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Helper 
+   - pid: 8361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Helper 
+   - pid: 8361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Helper 
+   - pid: 8361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Adobe Desktop Service 
+   - pid: 8312 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Adobe Desktop Service 
+   - pid: 8312 
+   - connection type 1
+   - ip 0 
+   - local port 15292
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Adobe Desktop Service 
+   - pid: 8312 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Adobe Desktop Service 
+   - pid: 8312 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Adobe Desktop Service 
+   - pid: 8312 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Adobe Desktop Service 
+   - pid: 8312 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Core Sync 
+   - pid: 8309 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Core Sync 
+   - pid: 8309 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Core Sync 
+   - pid: 8309 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 1
+   - ip 52.202.204.11 
+   - local port 54610
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation t
+ socket num: process name: Creative Cloud Content Manager. 
+   - pid: 8278 
+   - connection type 1
+   - ip 34.193.227.236 
+   - local port 54089
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation 
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AdobeIPCBroker 
+   - pid: 8252 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Messages Share Extension 
+   - pid: 6929 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.WebKit.GPU 
+   - pid: 6794 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPLibraryAgent 
+   - pid: 6107 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPLibraryAgent 
+   - pid: 6107 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPLibraryAgent 
+   - pid: 6107 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: akd 
+   - pid: 6102 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: akd 
+   - pid: 6102 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 2747 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 2680 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: CrashReporterSupportHelper 
+   - pid: 2658 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: SubmitDiagInfo 
+   - pid: 733 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.WebKit.Networking 
+   - pid: 2548 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.WebKit.WebContent 
+   - pid: 2546 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.WebKit.GPU 
+   - pid: 2544 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 2539 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: parentalcontrolsd 
+   - pid: 2137 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: WakaTime 
+   - pid: 2132 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Raycast 
+   - pid: 2128 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Raycast 
+   - pid: 2128 
+   - connection type 1
+   - ip 0 
+   - local port 7265
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Malwarebytes Browser Guard Upda 
+   - pid: 2114 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: icdd 
+   - pid: 2117 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: corespeechd 
+   - pid: 2109 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 2106 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 74.125.134.188 
+   - local port 54083
+   - foreign port 5228 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 142.250.217.163 
+   - local port 57583
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 74.125.134.188 
+   - local port 54084
+   - foreign port 5228 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 140.82.112.26 
+   - local port 55055
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 57.144.198.192 
+   - local port 54154
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 57.144.198.145 
+   - local port 53040
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 142.250.64.174 
+   - local port 51641
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 104.16.103.112 
+   - local port 54145
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 142.251.34.138 
+   - local port 54888
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 44.214.249.190 
+   - local port 55277
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 57.144.198.192 
+   - local port 54126
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 142.250.217.202 
+   - local port 55291
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 52.86.220.33 
+   - local port 54096
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 104.16.103.112 
+   - local port 54140
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 1
+   - ip 57.144.198.192 
+   - local port 54128
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: Browser Helper 
+   - pid: 1269 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: studentd 
+   - pid: 857 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: commerce 
+   - pid: 838 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: commerce 
+   - pid: 838 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: StocksWidget 
+   - pid: 819 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: CursorUIViewService 
+   - pid: 808 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: imklaunchagent 
+   - pid: 805 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: WiFiAgent 
+   - pid: 799 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.CloudDocs.iCloudDrive 
+   - pid: 792 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: oahd 
+   - pid: 785 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPDeviceDiscoveryAgent 
+   - pid: 776 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPDeviceDiscoveryAgent 
+   - pid: 776 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPDeviceDiscoveryAgent 
+   - pid: 776 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AMPDeviceDiscoveryAgent 
+   - pid: 776 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Finder 
+   - pid: 764 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 1
+   - ip 0 
+   - local port 7000
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 1
+   - ip 0 
+   - local port 7000
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 1
+   - ip 0 
+   - local port 5000
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 1
+   - ip 0 
+   - local port 5000
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: ControlCenter 
+   - pid: 762 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Dock 
+   - pid: 760 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: Arc 
+   - pid: 746 
+   - connection type 1
+   - ip 142.250.64.170 
+   - local port 54127
+   - foreign port 443 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 722 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: avconferenced 
+   - pid: 714 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: bluetoothuserd 
+   - pid: 703 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: familycircled 
+   - pid: 695 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: familycircled 
+   - pid: 695 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 694 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 49326
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: sharingd 
+   - pid: 689 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 1
+   - ip fe80:15::3ad8:4 
+   - local port 1024
+   - foreign port 1024 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 1
+   - ip fe80:15::3ad8:4 
+   - local port 1025
+   - foreign port 1026 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: identityservicesd 
+   - pid: 660 
+   - connection type 1
+   - ip fe80:15::3ad8:4 
+   - local port 1025
+   - foreign port 1026 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: fileproviderd 
+   - pid: 656 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: trustd 
+   - pid: 652 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 645 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: duetexpertd 
+   - pid: 640 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: routined 
+   - pid: 631 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: chronod 
+   - pid: 637 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usernoted 
+   - pid: 630 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nsurlsessiond 
+   - pid: 626 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nsurlsessiond 
+   - pid: 626 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nsurlsessiond 
+   - pid: 626 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nsurlsessiond 
+   - pid: 626 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 1
+   - ip 0 
+   - local port 54077
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 1
+   - ip 0 
+   - local port 54077
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 0
+   - ip 0 
+   - local port 3722
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: rapportd 
+   - pid: 621 
+   - connection type 1
+   - ip 192.168.86.51 
+   - local port 54077
+   - foreign port 51414 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: accountsd 
+   - pid: 613 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 596 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 596 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 596 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 596 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 596 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifianalyticsd 
+   - pid: 591 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: wifianalyticsd 
+   - pid: 591 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 589 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: searchpartyd 
+   - pid: 560 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: searchpartyd 
+   - pid: 560 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 547 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.docker.vmnetd 
+   - pid: 541 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.docker.vmnetd 
+   - pid: 541 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: RTProtectionDaemon 
+   - pid: 538 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: RTProtectionDaemon 
+   - pid: 538 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 536 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 534 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 5353
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: mDNSResponder 
+   - pid: 507 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: syspolicyd 
+   - pid: 504 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 495 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: symptomsd 
+   - pid: 477 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: symptomsd 
+   - pid: 477 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: symptomsd 
+   - pid: 477 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: symptomsd 
+   - pid: 477 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: symptomsd 
+   - pid: 477 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: socketfilterfw 
+   - pid: 475 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 421 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 411 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 413 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: locationd 
+   - pid: 360 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: locationd 
+   - pid: 360 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nsurlsessiond 
+   - pid: 406 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nsurlsessiond 
+   - pid: 406 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: trustd 
+   - pid: 396 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: trustd 
+   - pid: 396 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: airportd 
+   - pid: 392 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: lsd 
+   - pid: 390 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: contextstored 
+   - pid: 388 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: timed 
+   - pid: 356 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: timed 
+   - pid: 356 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: timed 
+   - pid: 356 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: timed 
+   - pid: 356 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: runningboardd 
+   - pid: 386 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: distnoted 
+   - pid: 365 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: loginwindow 
+   - pid: 385 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: usbmuxd 
+   - pid: 357 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: cfprefsd 
+   - pid: 384 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: WindowServer 
+   - pid: 382 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: revisiond 
+   - pid: 370 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: systemstats 
+   - pid: 321 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: com.apple.cmio.registerassistan 
+   - pid: 379 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nesessionmanager 
+   - pid: 361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nesessionmanager 
+   - pid: 361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nesessionmanager 
+   - pid: 361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nesessionmanager 
+   - pid: 361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nesessionmanager 
+   - pid: 361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: nesessionmanager 
+   - pid: 361 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: dasd 
+   - pid: 363 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: powerd 
+   - pid: 326 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: apsd 
+   - pid: 354 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: apsd 
+   - pid: 354 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: remoted 
+   - pid: 331 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: configd 
+   - pid: 324 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: logd 
+   - pid: 313 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AirPlayXPCHelper 
+   - pid: 378 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AirPlayXPCHelper 
+   - pid: 378 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AirPlayXPCHelper 
+   - pid: 378 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: AirPlayXPCHelper 
+   - pid: 378 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: UserEventAgent 
+   - pid: 315 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: kernelmanagerd 
+   - pid: 343 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 138
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 137
+   - foreign port 0 
+   - listening 1
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0
+
+ socket num: process name: launchd 
+   - pid: 1 
+   - connection type 0
+   - ip 0 
+   - local port 0
+   - foreign port 0 
+   - listening 0
+   - local 0
+   - creation time 0

@@ -2,10 +2,10 @@ package main
 
 import "C"
 import (
-	"strconv"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss/table"
 	"github.com/google/gopacket/pcap"
 )
 
@@ -17,6 +17,11 @@ func doTick() tea.Cmd {
 	})
 }
 
+type processDesc struct {
+	name string
+}
+type processSocketMap map[processDesc]map[socketKey]PacketInfo
+
 type model struct {
 	handle          *pcap.Handle
 	unmatchedPacket []PacketInfo
@@ -24,19 +29,38 @@ type model struct {
 	timer           int
 	socketTable     *socketMap
 	matchedPackets  []processAndPacket
+	displayTable    *table.Table
 }
 
 func initialModel() model {
-	return model{}
+	return model{
+		displayTable: table.New().Headers("Name", "Source IP", "Dest IP", "Src Port", "Dest Port"),
+	}
 }
 
 func (m model) Init() tea.Cmd {
+
 	return tea.Batch((func() tea.Msg { return wireInit() }), doTick())
 }
 
 func (m model) View() string {
-
-	return strconv.Itoa(m.timer) + "\n" + m.display + "\n"
+	if (m.socketTable == nil) || (len(m.matchedPackets) == 0) {
+		return ""
+	}
+	var rowLen int
+	if len(m.matchedPackets) < 10 {
+		rowLen = len(m.matchedPackets)
+	} else {
+		rowLen = 10
+	}
+	rows := make([][]string, rowLen)
+	for i := range rowLen {
+		row := (m.matchedPackets)[len(m.matchedPackets)-i-1]
+		rows[i] = []string{row.process.ProcessName, row.packet.sourceIP, row.packet.destPort, row.packet.sourcePort, row.packet.destPort}
+	}
+	m.displayTable.ClearRows()
+	m.displayTable.Rows(rows...)
+	return m.displayTable.Render()
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -68,10 +92,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		if msg.data.process == (socketKey{}) { //unmatched
 			m.unmatchedPacket = append(m.unmatchedPacket, msg.data.packet)
 			cmds = append(cmds, getCStructCmd())
-			m.display = "unmatched"
+
 		} else {
 			m.matchedPackets = append(m.matchedPackets, msg.data)
-			m.display = msg.data.packet.destIP
 
 		}
 

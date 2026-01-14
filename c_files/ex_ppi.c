@@ -91,7 +91,7 @@ pid_t *getPids(int *amtPids) {
 }
 
 int getSocketData(pid_t pid, int fd, struct socket_fdinfo *socketInfo) {
-  int bytesRead = proc_pidfdinfo(pid, fd, PROC_PIDFILEPORTSOCKETINFO,
+  int bytesRead = proc_pidfdinfo(pid, fd, PROC_PIDFDSOCKETINFO,
                                  socketInfo, sizeof(struct socket_fdinfo));
   return bytesRead;
 }
@@ -151,7 +151,7 @@ void socketCount(int *numSocketsPtr) {
 
 void descSocket(struct socketInfo *info,
                 struct socketinfo_andpid *socket_info) {
-
+  info->creationTime = socket_info->socketinfo.psi.soi_stat.vst_birthtime;
   info->local = 0;
   info->pid = socket_info->pid;
   proc_name(socket_info->pid, info->processName, sizeof(processName_t));
@@ -296,11 +296,11 @@ void printSockets(struct socketInfo *socketData, int socketNum, int log) {
       snprintf(socketDesc, 200,
                "process name: %s \n   - pid: %d \n   - connection type %d"
                "\n   - ip %s \n   - local port %d\n   - foreign port %d \n   - "
-               "listening %d\n   - local %d\n",
+               "listening %d\n   - local %d\n   - creation time %d\n",
                socketData[i].processName, socketData[i].pid,
                socketData[i].socket_type, socketData[i].destIPAddr,
                socketData[i].sourcePort, socketData[i].destPort,
-               socketData[i].listening, socketData[i].local);
+               socketData[i].listening, socketData[i].local, socketData[i].creationTime);
       logToFileStr(socketDesc);
     } else {
       printf("process name: %s \n   - pid: %d \n   - connection type %d"

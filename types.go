@@ -1,13 +1,18 @@
 package main
 
-import "github.com/google/gopacket"
+import (
+	"time"
+
+	"github.com/google/gopacket"
+)
 
 type socketKey struct {
-	ProcessName string
-	DestIP      string
-	SrcPort     string
-	DestPort    string
-	ConnType    int32
+	ProcessName  string
+	DestIP       string
+	SrcPort      string
+	DestPort     string
+	ConnType     int32
+	CreationTime time.Time
 }
 
 type PacketInfo struct {

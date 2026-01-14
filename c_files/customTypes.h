@@ -28,6 +28,8 @@ struct socketInfo {
   port destPort;
   int local;
   int listening;
+  // extra fields for fun
+  int creationTime;
 };
 
 
