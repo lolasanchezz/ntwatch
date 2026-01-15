@@ -22,14 +22,20 @@ type processDesc struct {
 }
 type processSocketMap map[processDesc]map[socketKey]PacketInfo
 
+type display struct {
+	height int
+	width  int
+}
+
 type model struct {
-	handle          *pcap.Handle
-	unmatchedPacket []PacketInfo
-	display         string
-	timer           int
-	socketTable     *socketMap
-	matchedPackets  []processAndPacket
-	displayTable    *table.Table
+	handle            *pcap.Handle
+	unmatchedPacket   []PacketInfo
+	timer             int
+	socketTable       *socketMap
+	matchedPackets    []processAndPacket //deprecated - not using anymore
+	matchedPacketsTbl map[socketKey][]PacketInfo
+	displayTable      *table.Table
+	display           display
 }
 
 func initialModel() model {
@@ -44,19 +50,14 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) View() string {
-	if (m.socketTable == nil) || (len(m.matchedPackets) == 0) {
+	if (m.socketTable == nil) || (len(m.matchedPackets) == 0) || (m.display.height == 0) {
 		return ""
 	}
-	var rowLen int
-	if len(m.matchedPackets) < 10 {
-		rowLen = len(m.matchedPackets)
-	} else {
-		rowLen = 10
-	}
+	rowLen := min(m.display.height-4, len(m.matchedPackets))
 	rows := make([][]string, rowLen)
 	for i := range rowLen {
 		row := (m.matchedPackets)[len(m.matchedPackets)-i-1]
-		rows[i] = []string{row.process.ProcessName, row.packet.sourceIP, row.packet.destPort, row.packet.sourcePort, row.packet.destPort}
+		rows[i] = []string{row.process.ProcessName, row.packet.sourceIP, row.packet.destIP, row.packet.sourcePort, row.packet.destPort}
 	}
 	m.displayTable.ClearRows()
 	m.displayTable.Rows(rows...)
@@ -97,7 +98,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.matchedPackets = append(m.matchedPackets, msg.data)
 
 		}
-
+	case tea.WindowSizeMsg:
+		m.display.height = msg.Height
+		m.display.width = msg.Width
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "ctrl+c":
