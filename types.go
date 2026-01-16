@@ -13,6 +13,7 @@ type socketKey struct {
 	DestPort     string
 	ConnType     int32
 	CreationTime time.Time
+	Pid          string
 }
 
 type PacketInfo struct {
@@ -23,4 +24,5 @@ type PacketInfo struct {
 	destPort       string
 	eof            bool
 	appData        []byte
+	packetSize     int
 }

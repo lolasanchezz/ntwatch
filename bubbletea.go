@@ -5,6 +5,7 @@ import (
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/lipgloss/table"
 	"github.com/google/gopacket/pcap"
 )
@@ -12,9 +13,13 @@ import (
 type TickMsg time.Time
 
 func doTick() tea.Cmd {
-	return tea.Tick(time.Second/2, func(t time.Time) tea.Msg {
+	return tea.Tick(time.Second*2, func(t time.Time) tea.Msg {
 		return TickMsg(t)
 	})
+}
+
+var defaultHeaders = []string{
+	"Source IP", "Dest IP", "Src Port", "Dest Port", "Connection type",
 }
 
 type processDesc struct {
@@ -31,16 +36,25 @@ type model struct {
 	handle            *pcap.Handle
 	unmatchedPacket   []PacketInfo
 	timer             int
+	tableNum          int
+	socketNum         int
 	socketTable       *socketMap
 	matchedPackets    []processAndPacket //deprecated - not using anymore
 	matchedPacketsTbl map[socketKey][]PacketInfo
+	recentSockets     []socketKey
 	displayTable      *table.Table
 	display           display
 }
 
 func initialModel() model {
+	tableNum := 3
+	socketNum := 10
 	return model{
-		displayTable: table.New().Headers("Name", "Source IP", "Dest IP", "Src Port", "Dest Port"),
+		displayTable:      table.New().Headers("Name", "Source IP", "Dest IP", "Src Port", "Dest Port", "Connection type"),
+		matchedPacketsTbl: make(map[socketKey][]PacketInfo),
+		tableNum:          tableNum,
+		socketNum:         socketNum,
+		recentSockets:     make([]socketKey, 0, tableNum+1), //because it's a queue
 	}
 }
 
@@ -50,18 +64,30 @@ func (m model) Init() tea.Cmd {
 }
 
 func (m model) View() string {
-	if (m.socketTable == nil) || (len(m.matchedPackets) == 0) || (m.display.height == 0) {
+	// Only skip if no sockets exist yet
+	if len(m.recentSockets) == 0 {
 		return ""
 	}
-	rowLen := min(m.display.height-4, len(m.matchedPackets))
-	rows := make([][]string, rowLen)
-	for i := range rowLen {
-		row := (m.matchedPackets)[len(m.matchedPackets)-i-1]
-		rows[i] = []string{row.process.ProcessName, row.packet.sourceIP, row.packet.destIP, row.packet.sourcePort, row.packet.destPort}
+	tableNum := min(len(m.recentSockets), 3)
+	render := ""
+	for i := range tableNum {
+		table := table.New().Headers(defaultHeaders...)
+		socket := m.recentSockets[len(m.recentSockets)-i-1]
+		packets := m.matchedPacketsTbl[socket]
+		rowCount := min(m.socketNum, len(packets))
+		for j := range rowCount {
+			table.Rows([]string{
+				packets[len(packets)-j-1].sourceIP,
+				packets[len(packets)-j-1].destIP,
+				packets[len(packets)-j-1].sourcePort,
+				packets[len(packets)-j-1].destPort,
+				packets[len(packets)-j-1].packetProtocol.String(),
+			})
+		}
+		render = lipgloss.JoinVertical(lipgloss.Center, render, (socket.ProcessName + " " + socket.Pid), table.Render(), "\n")
 	}
-	m.displayTable.ClearRows()
-	m.displayTable.Rows(rows...)
-	return m.displayTable.Render()
+
+	return render
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -95,8 +121,19 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			cmds = append(cmds, getCStructCmd())
 
 		} else {
-			m.matchedPackets = append(m.matchedPackets, msg.data)
+			// Always append the packet to the table for this socket
+			m.matchedPacketsTbl[msg.data.process] = append(m.matchedPacketsTbl[msg.data.process], msg.data.packet)
 
+			// Add to recent sockets if this is a new socket (index == -1)
+			if msg.data.index == -1 {
+				if len(m.recentSockets) < m.tableNum {
+					// Room for more sockets
+					m.recentSockets = append(m.recentSockets, msg.data.process)
+				} else {
+					// Queue is full, remove oldest and add newest
+					m.recentSockets = append(m.recentSockets[1:], msg.data.process)
+				}
+			}
 		}
 	case tea.WindowSizeMsg:
 		m.display.height = msg.Height

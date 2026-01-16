@@ -5,6 +5,7 @@ import tea "github.com/charmbracelet/bubbletea"
 type processAndPacket struct {
 	process socketKey
 	packet  PacketInfo
+	index   int
 }
 
 type matchedPacketMsg struct {
@@ -27,9 +28,16 @@ func (m model) matchPackets(packet packetInfoMsg) processAndPacket {
 			(packet.data.sourcePort == val.DestPort)
 
 		if outgoing || incoming {
+			index := -1
+			for i, sock := range m.recentSockets {
+				if (sock.Pid == val.Pid) && (sock.ProcessName == val.ProcessName) {
+					index = i
+				}
+			}
 			return processAndPacket{
 				process: val,
 				packet:  packet.data,
+				index:   index,
 			}
 		}
 	}

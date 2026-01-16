@@ -40,6 +40,7 @@ func getCStruct() *socketMap {
 			DestPort:     strconv.Itoa(int(int32(socket.DestPort))),
 			ConnType:     int32(socket.Connection_type),
 			CreationTime: time.Unix(0, int64(socket.CreationTime)),
+			Pid:          strconv.Itoa(int(int32(socket.Pid))),
 		}
 		goSocketInfo[i] = key
 
