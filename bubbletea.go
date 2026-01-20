@@ -47,7 +47,7 @@ type model struct {
 }
 
 func initialModel() model {
-	tableNum := 20
+	tableNum := 5
 	socketNum := 10
 	return model{
 		recentSocketsTable: table.New().Headers("Name", "Pid"),
@@ -73,7 +73,7 @@ func (m model) View() string {
 	render := ""
 	rows := make([][]string, len(m.recentSockets))
 	for i, val := range m.recentSockets {
-		rows[i] = []string{val.ProcessName, val.Pid}
+		rows[len(m.recentSockets)-i-1] = []string{val.ProcessName, val.Pid}
 	}
 	m.recentSocketsTable.ClearRows().Rows(rows...)
 	for i := range tableNum {
@@ -91,9 +91,9 @@ func (m model) View() string {
 				packets[len(packets)-j-1].Timestamp.Format("15:04:05"),
 			})
 		}
-		render = lipgloss.JoinVertical(lipgloss.Center, render, (socket.ProcessName + " " + socket.Pid), table.Render(), "\n")
+		render = lipgloss.JoinVertical(lipgloss.Left, render, (socket.ProcessName + " " + socket.Pid), table.Render(), "\n")
 	}
-	render = lipgloss.JoinHorizontal(lipgloss.Center, render, m.recentSocketsTable.Render())
+	render = lipgloss.JoinHorizontal(lipgloss.Top, render, m.recentSocketsTable.Render())
 	return render
 }
 
