@@ -2,6 +2,7 @@ package main
 
 import (
 	"net"
+	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/google/gopacket"
@@ -71,7 +72,11 @@ func getIPs(p gopacket.Packet) PacketInfo {
 	if p.ApplicationLayer() != nil {
 		packetInfo.appData = p.ApplicationLayer().Payload()
 	}
-
+	packetInfo.Timestamp = p.Metadata().Timestamp
+	// Debug: check if timestamp is zero
+	if packetInfo.Timestamp.IsZero() {
+		packetInfo.Timestamp = time.Now()
+	}
 	netLayer := p.NetworkLayer()
 	if netLayer == nil {
 		for _, layer := range p.Layers() {
@@ -87,25 +92,26 @@ func getIPs(p gopacket.Packet) PacketInfo {
 	}
 
 	src, dest = netLayer.NetworkFlow().Endpoints()
+	packetInfo.destIP = dest.String()
+	packetInfo.sourceIP = src.String()
+
 	if !((src == pastIPs[0]) && (dest == pastIPs[1])) && !((src == pastIPs[1]) && (dest == pastIPs[0])) {
 		//means that this is a new flow
 		//	fmt.Print("\n")
 		//		fmt.Print(src, dest, "\n")
 		pastIPs[0] = src
 		pastIPs[1] = dest
-		packetInfo.destIP = dest.String()
-		packetInfo.sourceIP = src.String()
-		if p.TransportLayer() != nil {
-			packetInfo.packetProtocol = p.TransportLayer().LayerType()
-			//	fmt.Print("ports ")
-			//	fmt.Print(p.TransportLayer().TransportFlow().Endpoints())
-			//	fmt.Print(" \n")
-			packetInfo.sourcePort = p.TransportLayer().TransportFlow().Src().String()
-			packetInfo.destPort = p.TransportLayer().TransportFlow().Dst().String()
-
-		}
-
 	}
+
+	if p.TransportLayer() != nil {
+		packetInfo.packetProtocol = p.TransportLayer().LayerType()
+		//	fmt.Print("ports ")
+		//	fmt.Print(p.TransportLayer().TransportFlow().Endpoints())
+		//	fmt.Print(" \n")
+		packetInfo.sourcePort = p.TransportLayer().TransportFlow().Src().String()
+		packetInfo.destPort = p.TransportLayer().TransportFlow().Dst().String()
+	}
+
 	return packetInfo
 
 }

@@ -19,7 +19,7 @@ func doTick() tea.Cmd {
 }
 
 var defaultHeaders = []string{
-	"Source IP", "Dest IP", "Src Port", "Dest Port", "Connection type",
+	"Source IP", "Dest IP", "Src Port", "Dest Port", "Connection type", "Time",
 }
 
 type processDesc struct {
@@ -33,28 +33,28 @@ type display struct {
 }
 
 type model struct {
-	handle            *pcap.Handle
-	unmatchedPacket   []PacketInfo
-	timer             int
-	tableNum          int
-	socketNum         int
-	socketTable       *socketMap
-	matchedPackets    []processAndPacket //deprecated - not using anymore
-	matchedPacketsTbl map[socketKey][]PacketInfo
-	recentSockets     []socketKey
-	displayTable      *table.Table
-	display           display
+	handle             *pcap.Handle
+	unmatchedPacket    []PacketInfo
+	timer              int
+	tableNum           int
+	socketNum          int
+	socketTable        *socketMap
+	matchedPackets     []processAndPacket //deprecated - not using anymore
+	matchedPacketsTbl  map[socketKey][]PacketInfo
+	recentSockets      []socketKey
+	recentSocketsTable *table.Table
+	display            display
 }
 
 func initialModel() model {
-	tableNum := 3
+	tableNum := 20
 	socketNum := 10
 	return model{
-		displayTable:      table.New().Headers("Name", "Source IP", "Dest IP", "Src Port", "Dest Port", "Connection type"),
-		matchedPacketsTbl: make(map[socketKey][]PacketInfo),
-		tableNum:          tableNum,
-		socketNum:         socketNum,
-		recentSockets:     make([]socketKey, 0, tableNum+1), //because it's a queue
+		recentSocketsTable: table.New().Headers("Name", "Pid"),
+		matchedPacketsTbl:  make(map[socketKey][]PacketInfo),
+		tableNum:           tableNum,
+		socketNum:          socketNum,
+		recentSockets:      make([]socketKey, 0, tableNum+1), //because it's a queue
 	}
 }
 
@@ -68,8 +68,14 @@ func (m model) View() string {
 	if len(m.recentSockets) == 0 {
 		return ""
 	}
+	//can change later
 	tableNum := min(len(m.recentSockets), 3)
 	render := ""
+	rows := make([][]string, len(m.recentSockets))
+	for i, val := range m.recentSockets {
+		rows[i] = []string{val.ProcessName, val.Pid}
+	}
+	m.recentSocketsTable.ClearRows().Rows(rows...)
 	for i := range tableNum {
 		table := table.New().Headers(defaultHeaders...)
 		socket := m.recentSockets[len(m.recentSockets)-i-1]
@@ -82,11 +88,12 @@ func (m model) View() string {
 				packets[len(packets)-j-1].sourcePort,
 				packets[len(packets)-j-1].destPort,
 				packets[len(packets)-j-1].packetProtocol.String(),
+				packets[len(packets)-j-1].Timestamp.Format("15:04:05"),
 			})
 		}
 		render = lipgloss.JoinVertical(lipgloss.Center, render, (socket.ProcessName + " " + socket.Pid), table.Render(), "\n")
 	}
-
+	render = lipgloss.JoinHorizontal(lipgloss.Center, render, m.recentSocketsTable.Render())
 	return render
 }
 

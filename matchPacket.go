@@ -34,6 +34,13 @@ func (m model) matchPackets(packet packetInfoMsg) processAndPacket {
 					index = i
 				}
 			}
+			if outgoing {
+				val.outgoing++
+			}
+			if incoming {
+				val.incoming++
+			}
+
 			return processAndPacket{
 				process: val,
 				packet:  packet.data,
