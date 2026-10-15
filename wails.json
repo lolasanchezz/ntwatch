@@ -9,5 +9,10 @@
   "author": {
     "name": "lola sanchez",
     "email": "lola@hackclub.com"
+  },
+  "info": {
+    "productName": "ntwatch",
+    "productVersion": "2.0.0",
+    "copyright": "Copyright © 2026 lola sanchez"
   }
 }
