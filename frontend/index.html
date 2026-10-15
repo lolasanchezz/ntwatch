@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>ntwatch</title>
+</head>
+<body>
+<header class="topbar">
+    <span class="brand">ntwatch</span>
+    <nav class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-overview" data-view="overview" aria-controls="view-overview">Overview</button>
+        <button class="tab" role="tab" id="tab-processes" data-view="processes" aria-controls="view-processes">Processes</button>
+    </nav>
+    <span class="spacer"></span>
+    <span class="header-status" id="status"></span>
+    <span class="header-rates" id="rates"></span>
+</header>
+<div id="error" role="alert"></div>
+<main>
+<section id="view-processes" class="proc-view" role="tabpanel" aria-labelledby="tab-processes" hidden>
+    <aside class="card proc-list-card">
+        <div class="card-head"><h2>Processes</h2></div>
+        <div class="group-label">Viewing</div>
+        <ul class="proc-list" id="proc-pinned" aria-label="The process being viewed"></ul>
+        <div class="group-label">Recently active</div>
+        <ul class="proc-list" id="proc-list" aria-label="Processes, most recently active first - use the arrow keys to move between them"></ul>
+    </aside>
+    <div class="card proc-detail" id="proc-detail"></div>
+</section>
+<section id="view-overview" class="overview" role="tabpanel" aria-labelledby="tab-overview">
+    <div class="card wide">
+        <div class="card-head">
+            <h2>Bandwidth</h2><span class="sub">last 60 seconds</span>
+            <span class="spacer"></span>
+            <div class="legend">
+                <span><i class="key-line s1"></i>Download</span>
+                <span><i class="key-line s2"></i>Upload</span>
+            </div>
+            <button class="ghost" id="bw-toggle">Show table</button>
+        </div>
+        <div class="stats" id="bw-stats"></div>
+        <div class="chart" id="bw-chart" tabindex="0" aria-label="Bandwidth over the last 60 seconds. Use the arrow keys to read values."></div>
+        <table class="data-table" id="bw-table" hidden></table>
+    </div>
+    <div class="card">
+        <div class="card-head">
+            <h2>Top processes</h2><span class="sub">by data, last minute</span>
+            <span class="spacer"></span>
+            <div class="legend">
+                <span><i class="key-rect s1"></i>Download</span>
+                <span><i class="key-rect s2"></i>Upload</span>
+            </div>
+        </div>
+        <div class="bars" id="top-procs"></div>
+    </div>
+    <div class="card">
+        <div class="card-head"><h2>Top destinations</h2><span class="sub">by data, last minute</span></div>
+        <div id="top-dests"></div>
+    </div>
+    <div class="card">
+        <div class="card-head"><h2>Latency</h2><span class="sub">median round trip of open TCP connections</span></div>
+        <div class="bars" id="latency"></div>
+    </div>
+    <div class="card">
+        <div class="card-head"><h2>Unencrypted traffic</h2><span class="sub">readable text sent or received in the clear</span></div>
+        <div class="alerts" id="plaintext"></div>
+    </div>
+    <div class="card span-2">
+        <div class="card-head">
+            <h2>Open ports</h2><span class="sub">sockets waiting for incoming connections, reachable from other machines first</span>
+            <span class="spacer"></span>
+            <button class="ghost" id="ports-toggle" hidden>Show all</button>
+        </div>
+        <div id="ports"></div>
+    </div>
+</section>
+</main>
+<script src="./src/main.ts" type="module"></script>
+</body>
+</html>

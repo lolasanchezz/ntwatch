@@ -8,7 +8,7 @@ type socketsDef struct {
 	ProcessName     [32]int8
 	Socket_type     uint32
 	Connection_type uint32
-	DestIPAddr      [16]int8
+	DestIPAddr      [46]int8
 	SourcePort      uint16
 	DestPort        uint16
 	Local           int32

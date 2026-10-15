@@ -1,10 +1,11 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
 	"net"
 	"time"
 
-	tea "github.com/charmbracelet/bubbletea"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
@@ -26,43 +27,70 @@ const (
 )
 */
 
-type wireInitMsg struct{ handle *pcap.Handle }
+// the interface packets are captured on
+const captureInterface = "en0"
 
-func wireInit() wireInitMsg {
+type wireInitMsg struct {
+	handle *pcap.Handle
+	mac    net.HardwareAddr // en0's own address, to tell sent packets from received ones
+}
+
+func wireInit() Msg {
 	// first connect to en0
-	handle, err := pcap.OpenLive("en0", 1600, true, pcap.BlockForever)
+	inactive, err := pcap.NewInactiveHandle(captureInterface)
 	if err != nil {
-		panic(err)
+		return errMsg{fmt.Errorf("opening %s: %w", captureInterface, err)}
+	}
+	defer inactive.CleanUp()
+	inactive.SetSnapLen(1600)
+	// wifi on macOS can't do promiscuous mode (OpenLive silently skipped it), and we
+	// only care about this machine's own traffic anyway
+	inactive.SetPromisc(false)
+	inactive.SetTimeout(pcap.BlockForever)
+	// hand over each packet as soon as it arrives - otherwise macOS holds them
+	// until its buffer fills, which looks like a freeze when traffic is light
+	inactive.SetImmediateMode(true)
+
+	handle, err := inactive.Activate()
+	if err != nil {
+		return errMsg{fmt.Errorf("opening %s: %w", captureInterface, err)}
 	}
 
-	return wireInitMsg{handle: handle}
+	var mac net.HardwareAddr
+	if iface, err := net.InterfaceByName(captureInterface); err == nil {
+		mac = iface.HardwareAddr
+	}
+	return wireInitMsg{handle: handle, mac: mac}
 
 }
 
 type WireDataMsg struct{ data gopacket.Packet }
 
-func (m model) sendPacketCmd() tea.Cmd {
-	return func() tea.Msg {
-		packet, _, err := m.handle.ReadPacketData()
+func sendPacketCmd(handle *pcap.Handle) Cmd {
+	return func() Msg {
+		data, ci, err := handle.ReadPacketData()
 		if err != nil {
-			panic(err)
+			return errMsg{fmt.Errorf("reading packet: %w", err)}
 		}
 
-		return WireDataMsg{
-			data: gopacket.NewPacket(packet, layers.LayerTypeEthernet, gopacket.Default),
-		}
+		packet := gopacket.NewPacket(data, layers.LayerTypeEthernet, gopacket.Default)
+		packet.Metadata().CaptureInfo = ci // real capture timestamp + length
+		return WireDataMsg{data: packet}
 	}
 }
 
-type packetInfoMsg struct{ data PacketInfo }
+type packetInfoMsg struct {
+	data    PacketInfo
+	retried bool // second try at matching it
+}
 
-func readPacketCmd(packet gopacket.Packet) tea.Cmd {
-	return func() tea.Msg {
-		return packetInfoMsg{data: getIPs(packet)}
+func readPacketCmd(packet gopacket.Packet, mac net.HardwareAddr) Cmd {
+	return func() Msg {
+		return packetInfoMsg{data: getIPs(packet, mac)}
 	}
 }
 
-func getIPs(p gopacket.Packet) PacketInfo {
+func getIPs(p gopacket.Packet, mac net.HardwareAddr) PacketInfo {
 
 	var pastIPs [2]gopacket.Endpoint
 	var src gopacket.Endpoint
@@ -72,7 +100,13 @@ func getIPs(p gopacket.Packet) PacketInfo {
 	if p.ApplicationLayer() != nil {
 		packetInfo.appData = p.ApplicationLayer().Payload()
 	}
+	if eth, ok := p.LinkLayer().(*layers.Ethernet); ok {
+		packetInfo.outgoing = bytes.Equal(eth.SrcMAC, mac)
+		// the low bit of the first byte marks broadcast + multicast addresses
+		packetInfo.broadcast = len(eth.DstMAC) > 0 && eth.DstMAC[0]&1 == 1
+	}
 	packetInfo.Timestamp = p.Metadata().Timestamp
+	packetInfo.packetSize = p.Metadata().Length
 	// Debug: check if timestamp is zero
 	if packetInfo.Timestamp.IsZero() {
 		packetInfo.Timestamp = time.Now()
@@ -84,7 +118,7 @@ func getIPs(p gopacket.Packet) PacketInfo {
 				packetInfo.packetProtocol = layers.LayerTypeARP
 				arpLayer := layer.(*layers.ARP)
 				packetInfo.sourceIP = net.HardwareAddr(arpLayer.SourceHwAddress).String()
-				packetInfo.destIP = net.HardwareAddr(arpLayer.DstProtAddress).String()
+				packetInfo.destIP = net.IP(arpLayer.DstProtAddress).String()
 				//fmt.Print("arp packet sent by ", packetInfo.sourceIP, "looking for", packetInfo.destIP, "\n")
 			}
 		}
@@ -110,7 +144,15 @@ func getIPs(p gopacket.Packet) PacketInfo {
 		//	fmt.Print(" \n")
 		packetInfo.sourcePort = p.TransportLayer().TransportFlow().Src().String()
 		packetInfo.destPort = p.TransportLayer().TransportFlow().Dst().String()
+
+		// the raw payload - gopacket decodes 443 as tls and hides it otherwise
+		payload := p.TransportLayer().LayerPayload()
+		packetInfo.readable = readableText(payload, packetInfo.sourcePort, packetInfo.destPort)
+		if name := clientHelloSNI(payload); name != "" {
+			packetInfo.hostnames = append(packetInfo.hostnames, hostname{ip: packetInfo.destIP, name: name})
+		}
 	}
+	packetInfo.hostnames = append(packetInfo.hostnames, dnsHostnames(p)...)
 
 	return packetInfo
 

@@ -105,6 +105,12 @@ void convAddrIpv4(in_addr_t addr, char *ipStr) {
 void convAddrIpv6(const uint8_t addr[16], char *ipStr) {
   struct in6_addr address;
   memcpy(&address, addr, sizeof(address));
+  // the kernel tucks the interface index into bytes 2-3 of link-local addresses
+  // (fe80:c::...) - clear it so it reads like the address on the wire
+  if (IN6_IS_ADDR_LINKLOCAL(&address) || IN6_IS_ADDR_MC_LINKLOCAL(&address)) {
+    address.s6_addr[2] = 0;
+    address.s6_addr[3] = 0;
+  }
   inet_ntop(AF_INET6, &address, ipStr, INET6_ADDRSTRLEN);
 }
 
@@ -127,26 +133,17 @@ void pidsSocketsCountInternal(int *numSockets, int *pidAmt,
         socketNum++;
       }
     }
+    free(fdinfo);
   }
   *numSockets = socketNum;
 }
 
 void socketCount(int *numSocketsPtr) {
-  int amtPids;
+  int amtPids = 0;
   pid_t *allPidsArr = getPids(&amtPids);
 
-  int socketNum = 0;
-  for (int i = 0; i < amtPids; i++) {
-    int amtFds = 0;
-    struct proc_fdinfo *fdinfo = getFDs(allPidsArr[i], &amtFds);
-    // checking for sockets!
-    for (int j = 0; j < amtFds; j++) {
-      if (fdinfo[j].proc_fdtype == PROX_FDTYPE_SOCKET) {
-        socketNum++;
-      }
-    }
-  }
-  *numSocketsPtr = socketNum;
+  pidsSocketsCountInternal(numSocketsPtr, &amtPids, allPidsArr);
+  free(allPidsArr);
 }
 
 void descSocket(struct socketInfo *info,
@@ -173,8 +170,9 @@ void descSocket(struct socketInfo *info,
       return;
     }
 
-    if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag == INI_IPV4) {
+    if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag & INI_IPV4) {
       info->listening = 0;
+      info->connection_type = IPV4;
 
       char ipStr[INET_ADDRSTRLEN];
       convAddrIpv4(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr
@@ -191,10 +189,11 @@ void descSocket(struct socketInfo *info,
         }
       }
 
-    } else if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag ==
+    } else if (socket_info->socketinfo.psi.soi_proto.pri_in.insi_vflag &
                INI_IPV6) {
 
       info->listening = 0;
+      info->connection_type = IPV6;
 
       char ipStr[INET6_ADDRSTRLEN];
       convAddrIpv6(socket_info->socketinfo.psi.soi_proto.pri_in.insi_faddr.ina_6
@@ -226,7 +225,7 @@ void descSocket(struct socketInfo *info,
       return;
     }
 
-    if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag ==
+    if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini.insi_vflag &
         INI_IPV4) {
 
       info->listening = 0;
@@ -249,7 +248,7 @@ void descSocket(struct socketInfo *info,
       }
 
     } else if (socket_info->socketinfo.psi.soi_proto.pri_tcp.tcpsi_ini
-                   .insi_vflag == INI_IPV6) {
+                   .insi_vflag & INI_IPV6) {
 
       info->listening = 0;
       info->connection_type = IPV6;
@@ -315,40 +314,41 @@ void printSockets(struct socketInfo *socketData, int socketNum, int log) {
   }
 }
 
-void goSocketStructs(void *goSocketData, int *socketNum) {
-  int amtPids;
+// fills goSocketData with up to capacity sockets, and sets *socketNum to how many
+// were written. sockets can open between socketCount and this, so it never trusts
+// the count - anything past capacity is skipped until the next scan
+void goSocketStructs(void *goSocketData, int capacity, int *socketNum) {
+  struct socketInfo *socketData = (struct socketInfo *)goSocketData;
+  int written = 0;
 
+  int amtPids = 0;
   pid_t *allPidsArr = getPids(&amtPids);
 
-  pidsSocketsCountInternal(socketNum, &amtPids, allPidsArr);
-
-  struct socketinfo_andpid *socketDataArr = (struct socketinfo_andpid *)malloc(
-      *socketNum * sizeof(struct socketinfo_andpid));
-  int arrCounter = 0;
-  for (int i = 0; i < amtPids; i++) {
-
+  for (int i = 0; i < amtPids && written < capacity; i++) {
     int amtFds = 0;
     struct proc_fdinfo *fdinfo = getFDs(allPidsArr[i], &amtFds);
-    for (int j = 0; j < amtFds; j++) {
-      if (fdinfo[j].proc_fdtype == PROX_FDTYPE_SOCKET) {
-        struct socket_fdinfo socketInfo;
-        socketDataArr[arrCounter].fd = fdinfo[j].proc_fd;
-        socketDataArr[arrCounter].pid = allPidsArr[i];
-        int bytesRead = getSocketData(allPidsArr[i], fdinfo[j].proc_fd,
-                                      &socketDataArr[arrCounter].socketinfo);
-        arrCounter++;
+    for (int j = 0; j < amtFds && written < capacity; j++) {
+      if (fdinfo[j].proc_fdtype != PROX_FDTYPE_SOCKET) {
+        continue;
       }
+      struct socketinfo_andpid socket;
+      socket.pid = allPidsArr[i];
+      socket.fd = fdinfo[j].proc_fd;
+      int bytesRead = getSocketData(socket.pid, socket.fd, &socket.socketinfo);
+      // the socket closed since we listed it - nothing valid to read
+      if (bytesRead < (int)sizeof(struct socket_fdinfo)) {
+        continue;
+      }
+      memset(&socketData[written], 0, sizeof(struct socketInfo));
+      descSocket(&socketData[written], &socket);
+      written++;
     }
+    free(fdinfo);
   }
+  free(allPidsArr);
 
-  struct socketInfo *socketData = (struct socketInfo *)goSocketData;
-  for (int i = 0; i < *socketNum; i++) {
-    descSocket(&socketData[i], &socketDataArr[i]);
-  }
-  // printf("about to filter sockets\n");
-  // printf("pre: %d\n", *socketNum);
+  *socketNum = written;
   // filterSockets(NO_LISTEN, BOTH_LOCAL_STATES, socketData, socketNum);
-  // printf("post: %d\n", *socketNum);
 }
 
 void removeElement(struct socketInfo *socketArr, int *size, int index) {

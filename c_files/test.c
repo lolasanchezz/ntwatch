@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   struct socketInfo *goSocketData =
       (struct socketInfo *)malloc(socketNum * sizeof(struct socketInfo));
      //  printf("allocated memory\n");
-  goSocketStructs(goSocketData, &socketNum);
+  goSocketStructs(goSocketData, socketNum, &socketNum);
 
   // for testing purposes only
   printSockets(goSocketData, socketNum, 1);

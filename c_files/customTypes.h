@@ -5,7 +5,7 @@
 #define LISTENING_IP_PREFIX2 ":"
 
 
-typedef char ipAddr[16];
+typedef char ipAddr[46]; // INET6_ADDRSTRLEN - room for a full ipv6 address
 typedef uint16_t port;
 typedef char processName_t[2 * MAXCOMLEN];
 typedef __int32_t pid_t;

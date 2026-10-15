@@ -9,8 +9,6 @@ import (
 	"strconv"
 	"time"
 	"unsafe"
-
-	tea "github.com/charmbracelet/bubbletea"
 )
 
 const (
@@ -19,23 +17,31 @@ const (
 )
 
 type socketMap []socketKey
-type socketMapMsg struct{ data *socketMap }
+type socketMapMsg struct{ data socketMap }
 
-func getCStruct() *socketMap {
+func getCStruct() socketMap {
 
 	var sockets C.int
 	C.socketCount(&sockets)
+	if sockets == 0 {
+		return nil
+	}
 
-	var socketInfo = make([]socketsDef, sockets)
+	// sockets can open between counting and filling, so leave some room. the C side
+	// never writes past capacity and tells us how many it actually filled
+	capacity := sockets + sockets/4 + 16
+	var socketInfo = make([]socketsDef, capacity)
+	C.goSocketStructs(unsafe.Pointer(&socketInfo[0]), capacity, &sockets)
+	socketInfo = socketInfo[:sockets]
 	var goSocketInfo = make(socketMap, sockets)
-	C.goSocketStructs(unsafe.Pointer(&socketInfo[0]), &sockets)
 
 	for i := 0; i < len(socketInfo); i++ {
 		socket := socketInfo[i]
 
 		key := socketKey{
-			ProcessName:  cStringToGo32(socket.ProcessName),
-			DestIP:       cStringToGo16(socket.DestIPAddr),
+			ProcessName:  cString(socket.ProcessName[:]),
+			DestIP:       cString(socket.DestIPAddr[:]),
+			Proto:        int32(socket.Socket_type),
 			SrcPort:      strconv.Itoa(int(int32(socket.SourcePort))),
 			DestPort:     strconv.Itoa(int(int32(socket.DestPort))),
 			ConnType:     int32(socket.Connection_type),
@@ -45,10 +51,11 @@ func getCStruct() *socketMap {
 		goSocketInfo[i] = key
 
 	}
-	return &goSocketInfo
+	return goSocketInfo
 }
 
-func cStringToGo32(b [32]int8) string {
+// reads a null-terminated C char array
+func cString(b []int8) string {
 	n := 0
 	for ; n < len(b); n++ {
 		if b[n] == 0 { //if the string has ended
@@ -62,21 +69,8 @@ func cStringToGo32(b [32]int8) string {
 	return string(bytes)
 }
 
-func cStringToGo16(b [16]int8) string {
-	n := 0
-	for ; n < len(b); n++ {
-		if b[n] == 0 { //if the string has ended
-			break
-		}
-	}
-	bytes := make([]byte, n)
-	for i := 0; i < n; i++ {
-		bytes[i] = byte(b[i])
-	}
-	return string(bytes)
-}
-func getCStructCmd() tea.Cmd {
-	return func() tea.Msg {
+func getCStructCmd() Cmd {
+	return func() Msg {
 		return socketMapMsg{data: getCStruct()}
 	}
 }

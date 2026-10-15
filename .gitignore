@@ -5,3 +5,7 @@ ntwatch
 go.mod
 debug.txt
 *.zip
+build/bin
+frontend/node_modules
+frontend/dist/*
+!frontend/dist/gitkeep
